@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
         this.state = {
             username: '',
             password: '',
-            submitted: true,
+            submitted: false,
             activeTab: "jwt"
         };
 
