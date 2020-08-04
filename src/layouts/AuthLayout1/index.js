@@ -44,7 +44,7 @@ class Index extends React.Component {
                             <div className="col-sm-6 align-self-center">
                                 <div className="sign-in-from">
                                     <Switch>
-                                        <Route path="/auth/sign-in1" component={LoginPage} />
+                                        <Route path="/" component={LoginPage} />
                                         <Route path="/auth/sign-up1" component={RegisterPage} />
                                         <Route path="/auth/recover-password" component={ResetPassword} />
                                         <Route path="/auth/confirm-email" component={ConfirmMailPage} />
