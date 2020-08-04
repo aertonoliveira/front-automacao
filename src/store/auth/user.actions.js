@@ -1,6 +1,6 @@
-import { userConstants } from '../../../constants/user.constants';
-import { userService } from '../../../services';
-import { alertActions } from './';
+import { userConstants } from './authTypes';
+import { userService } from '../../services';
+import { alertActions } from './alert.actions';
 
 export const userActions = {
     login,
@@ -11,6 +11,7 @@ export const userActions = {
 };
 
 function login(username, password) {
+    console.log(username,password)
     return dispatch => {
         dispatch(request({ username }));
 

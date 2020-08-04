@@ -1,4 +1,4 @@
-import { userConstants } from '../../../constants/user.constants';
+import { userConstants } from '../../auth/authTypes';
 import { initialUserState } from "../../states/userState";
 
 export function users(state = initialUserState, action) {

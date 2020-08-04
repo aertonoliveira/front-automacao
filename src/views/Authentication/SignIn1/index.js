@@ -4,19 +4,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {Nav,NavItem,NavLink,TabContent,TabPane} from 'reactstrap';
-import { userActions } from '../../../store/actions/authAction/user.actions';
-import FirebaseLogin from './FirebaseLogin';
+import { userActions } from '../../../store/auth/user.actions';
 import { Redirect } from 'react-router'
 import PropTypes from 'prop-types';
 
 
 import { bindActionCreators } from 'redux';
-import AuthActions from '~/store/ducks/auth'; 
+// import AuthActions from '~/store/ducks/auth'; 
 
 class LoginPage extends React.Component {
-     static propTypes = {
-       signIn1Request: PropTypes.func.isRequired, 
-     };
+    //  static propTypes = {
+    //    signIn1Request: PropTypes.func.isRequired, 
+    //  };
 
 
     constructor(props) {
@@ -51,9 +50,9 @@ class LoginPage extends React.Component {
 
         this.setState({ submitted: true });
         const { username, password } = this.state;
-        const { signIn1Request } = this.props;
+        // const { signIn1Request } = this.props;
 
-        signIn1Request(username, password);
+        // signIn1Request(username, password);
 
         if (username && password) {
             this.props.login(username, password)

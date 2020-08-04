@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {Nav,NavItem,NavLink,TabContent,TabPane} from 'reactstrap';
 
-import { userActions } from '../../../store/actions/authAction/user.actions';
+import { userActions } from '../../../store/auth/user.actions';
 import FirebaseRegistration from './FirebaseRegistration';
 import { Redirect } from 'react-router'
 class RegisterPage extends React.Component {
