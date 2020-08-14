@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {Nav,NavItem,NavLink,TabContent,TabPane} from 'reactstrap';
 
-import { userActions } from '../../../store/auth/user.actions';
-import FirebaseRegistration from './FirebaseRegistration';
+import { login } from '../../../store/auth/authActions';
 import { Redirect } from 'react-router'
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -143,7 +142,7 @@ class RegisterPage extends React.Component {
                             </form>
                             </TabPane>
                             <TabPane tabId="firebase">
-                                <FirebaseRegistration />
+                                
                             </TabPane>
                             {/* <TabPane tabId="oauth">
                                 
@@ -165,7 +164,7 @@ const  mapState = state => {
 }
 
 const actionCreators = {
-    register: userActions.register
+    register: login
 }
 
 export default connect(mapState, actionCreators)(RegisterPage);

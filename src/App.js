@@ -11,11 +11,11 @@ class App extends React.Component {
     return (
         <div className="App">
           <Switch>
-            <Route exact path="/" component={AuthLayout1} />
+            <Route exact path="/" component={Layout1} />
             <Route path="/pages/:page" component={BlankLayout} />
             <Route path="/dashboard3/:page" component={Layout1} />
             <Route path="/dashboard4/:page" component={Layout1} />
-            {/* <Route path="/" component={Layout1} /> */}
+            <Route path="/auth/:page" component={AuthLayout1} />
           </Switch>
         </div>
     );

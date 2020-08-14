@@ -1,6 +1,16 @@
-export * from './alert.actions';
-export * from './user.actions';
-import {userConstants} from "./authTypes";
+import {
+    AUTH_LOGIN,
+    AUTH_LOADING,
+    AUTH_LOGIN_FAILURE,
+    AUTH_LOGIN_SUCCESS,
+    AUTH_LOGIN_FUNCIONARIO,
+    AUTH_LOGIN_FUNCIONARIO_SUCCESS,
+    AUTH_LOGIN_FUNCIONARIO_FAILURE,
+    AUTH_SET_ERROR,
+    AUTH_RESET,
+    AUTH_CHANGED,
+    AUTH_CHANGE_TOKEN
+} from "./authTypes";
 
 const initialState = {
     error: false,
