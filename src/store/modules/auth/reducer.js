@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   token: null,
   signed: false,
   loading: false,
+  email: null,
 };
 
 export default function auth(store = INITIAL_STATE, action) {
@@ -24,6 +25,26 @@ export default function auth(store = INITIAL_STATE, action) {
 
     case Types.AUTH_LOGIN_FAILURE:
       return { ...store, loading: false };
+
+    case Types.AUTH_RECUPERAR_SENHA_REQUEST:
+      return {
+        ...store,
+        loading: true,
+      };
+
+    case Types.AUTH_RECUPERAR_SENHA_SUCCESS:
+      return {
+        ...store,
+        loading: false,
+        email: action.payload,
+      };
+
+    case Types.AUTH_RECUPERAR_SENHA_FAILURE:
+      return {
+        ...store,
+        loading: false,
+        email: null,
+      };
 
     case Types.AUTH_LOGOUT:
       return {

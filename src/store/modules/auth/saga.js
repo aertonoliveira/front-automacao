@@ -6,6 +6,8 @@ import history from '../../../services/history';
 import * as Actions from './actions';
 import * as Types from './types';
 
+import _ from 'lodash';
+
 function* login({ payload }) {
   try {
     const { email, password } = payload;
@@ -22,11 +24,26 @@ function* login({ payload }) {
   }
 }
 
+function* recuperarSenha({ payload }) {
+  try {
+    yield call(api.post, '/auth/recovery', { email: payload });
+    yield put(Actions.recuperarSenhaSuccess(payload));
+
+    window.location.href = '/auth/confirm-email';
+  } catch (error) {
+    if (_.has(error, 'response.data.error.email[0]')) {
+      console.log('Error: ', error.response.data.error.email[0]);
+    }
+    yield put(Actions.recuperarSenhaFailure(error));
+  }
+}
+
 export function logout() {
   window.location.href = '/auth/login';
 }
 
 export default all([
   takeLatest(Types.AUTH_LOGIN, login),
+  takeLatest(Types.AUTH_RECUPERAR_SENHA_REQUEST, recuperarSenha),
   takeLatest(Types.AUTH_LOGOUT, logout),
 ]);

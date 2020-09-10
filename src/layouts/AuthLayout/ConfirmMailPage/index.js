@@ -1,10 +1,17 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { index } from '../../../config/pluginsInit';
 import { Button } from 'reactstrap';
 
+import { useSelector } from 'react-redux';
+
 const Index = (props) => {
+  const email = useSelector((state) => state.auth.email);
+
   useEffect(() => {
     index();
+
+    console.log('o email carregado: ', email);
   });
 
   return (
@@ -14,16 +21,16 @@ const Index = (props) => {
           src={require('../../../assets/images/login/mail.png')}
           alt="Mail Icon"
         />
-        <h1 className="mt-3 mb-0">Success !</h1>
+        <h1 className="mt-3 mb-0">Sucesso !</h1>
         <p>
-          A email has been send to youremail@domain.com. Please check for an
-          email from company and click on the included link to reset your
-          password.
+          O e-mail foi enviando para {email ? email : 'youremail@domain.com'}.
+          Por favor, verifique a sua caixa de e-mail e clique no link para
+          resetar a sua senha.
         </p>
         <div className={'d-inline-block w-100'}>
-          <Button color={'primary'} className={'mt-3'}>
-            Reset Password
-          </Button>
+          <Link to="/auth/login" color={'primary'} className={'mt-3'}>
+            Voltar
+          </Link>
         </div>
       </div>
     </>

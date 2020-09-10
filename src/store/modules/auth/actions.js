@@ -14,6 +14,20 @@ export const loginFailure = () => ({
   type: Types.AUTH_LOGIN_FAILURE,
 });
 
-export const logoutRequest = (token) => ({
+export const recuperarSenhaRequest = (email) => ({
+  type: Types.AUTH_RECUPERAR_SENHA_REQUEST,
+  payload: email,
+});
+
+export const recuperarSenhaSuccess = (email) => ({
+  type: Types.AUTH_RECUPERAR_SENHA_SUCCESS,
+  payload: email,
+});
+
+export const recuperarSenhaFailure = () => ({
+  type: Types.AUTH_RECUPERAR_SENHA_FAILURE,
+});
+
+export const logoutRequest = () => ({
   type: Types.AUTH_LOGOUT,
 });
