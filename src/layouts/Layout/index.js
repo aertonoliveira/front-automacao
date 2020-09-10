@@ -121,10 +121,8 @@ class Index extends React.Component {
     });
   };
 
-  handleLogout = (event) => {
-    event.preventDefault();
-
-    this.props.logoutRequest(this.props.token);
+  handleLogout = () => {
+    this.props.logoutRequest();
   };
 
   render() {
@@ -586,9 +584,7 @@ class Index extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    token: state.auth.token,
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, { logoutRequest })(Index);

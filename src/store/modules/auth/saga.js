@@ -23,7 +23,7 @@ function* login({ payload }) {
 }
 
 export function logout() {
-  window.location.href = '/login';
+  window.location.href = '/auth/login';
 }
 
 export default all([
