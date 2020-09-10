@@ -30,17 +30,15 @@ class Index extends React.Component {
                 <div className="sign-in-from">
                   <Switch>
                     <Route
-                      exact
-                      path="/recover-password"
+                      path="/auth/recover-password"
                       component={ResetPassword}
                     />
                     <Route
-                      exact
-                      path="/confirm-email"
+                      path="/auth/confirm-email"
                       component={ConfirmMailPage}
                     />
-                    <Route exact path="/lock-screen" component={LockScreen} />
-                    <Route exact path="/login" component={LoginPage} />
+                    <Route path="/auth/lock-screen" component={LockScreen} />
+                    <Route path="/auth/login" component={LoginPage} />
                   </Switch>
                 </div>
               </div>

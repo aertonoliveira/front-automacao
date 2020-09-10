@@ -50,7 +50,7 @@ const LoginPage = () => {
           </div>
           <div className={'form-group ' + (errors.password ? 'has-error' : '')}>
             <label htmlFor="password">Senha</label>
-            <Link to="/recover-password" className="float-right">
+            <Link to="/auth/recover-password" className="float-right">
               Esqueceu sua senha?
             </Link>
             <input

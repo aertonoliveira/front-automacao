@@ -22,7 +22,7 @@ const Index = () => {
             />
           </FormGroup>
           <div className="d-inline-block w-100">
-            <Link to="/" className="float-left btn btn-primary">
+            <Link to="/auth/login" className="float-left btn btn-primary">
               Voltar
             </Link>
             <button className="float-right btn btn-primary">
