@@ -55,6 +55,7 @@ const LoginPage = () => {
             </Link>
             <input
               className="form-control mb-0"
+              type="password"
               name="password"
               ref={register}
             />
@@ -68,7 +69,7 @@ const LoginPage = () => {
               className="btn btn-primary float-right"
               disabled={isLoading ? true : false}
             >
-              {isLoading ? 'Carregando' : 'Entrar'}
+              {isLoading ? 'Carregando...' : 'Entrar'}
             </button>
           </div>
           {/* <div className="sign-info">
