@@ -13,10 +13,10 @@ function* login({ payload }) {
     const { email, password } = payload;
     const response = yield call(api.post, '/auth/login', { email, password });
 
-    const { token } = response.data;
+    const { token, data } = response.data;
     api.defaults.headers.Authorization = `Beader ${token}`;
 
-    yield put(Actions.loginSuccess(token));
+    yield put(Actions.loginSuccess(token, data));
 
     yield call(history.push, '/dashboard');
   } catch (error) {

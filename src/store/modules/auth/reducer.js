@@ -20,7 +20,7 @@ export default function auth(store = INITIAL_STATE, action) {
         ...store,
         loading: false,
         signed: true,
-        token: action.payload,
+        token: action.payload.token,
       };
 
     case Types.AUTH_LOGIN_FAILURE:
@@ -49,9 +49,10 @@ export default function auth(store = INITIAL_STATE, action) {
     case Types.AUTH_LOGOUT:
       return {
         ...store,
-        loading: false,
-        signed: false,
         token: null,
+        signed: false,
+        loading: false,
+        email: null,
       };
 
     default:
