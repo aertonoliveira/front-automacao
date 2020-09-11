@@ -25,20 +25,8 @@ class Index extends React.Component {
         <div className="iq-sidebar-logo d-flex justify-content-between">
           <Link to={homeUrl}>
             <img src={logo} className="img-fluid" alt="" />
-            <span>Vito</span>
+            <span>Jin Invest</span>
           </Link>
-          <div className="iq-menu-bt-sidebar">
-            <div className="iq-menu-bt align-self-center">
-              <div className="wrapper-menu">
-                <div className="main-circle">
-                  <i className="ri-arrow-left-s-line"></i>
-                </div>
-                <div className="hover-circle">
-                  <i className="ri-arrow-right-s-line"></i>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div id="sidebar-scrollbar">
           <nav className="iq-sidebar-menu">
