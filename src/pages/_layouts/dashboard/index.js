@@ -16,8 +16,6 @@ import {
 import data1Json from '../../../assets/images/small/lottie-bell';
 import data2Json from '../../../assets/images/small/lottie-mail';
 
-import { Link } from 'react-router-dom';
-
 // Import JSON Data...
 import sideBarItems from './sidebar-menu';
 /*import Loading from "react-loading-bar";*/
