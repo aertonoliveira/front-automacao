@@ -1,13 +1,24 @@
 import React from 'react';
-import Layout from './layouts/Layout';
-import AuthLayout from './layouts/AuthLayout';
 
-import { store } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+
+import './config/ReactotronConfig';
+import { store, persistor } from './store';
+import Routes from './routes';
+import history from './services/history';
 
 const App = () => {
-  const { signed } = store.getState().auth;
-
-  return <>{signed ? <Layout /> : <AuthLayout />}</>;
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <Routes />
+        </Router>
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default App;

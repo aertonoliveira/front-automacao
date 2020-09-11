@@ -18,7 +18,7 @@ function* login({ payload }) {
 
     yield put(Actions.loginSuccess(token));
 
-    window.location.href = '/dashboard';
+    yield call(history.push, '/dashboard');
   } catch (error) {
     yield put(Actions.loginFailure(error));
   }
@@ -29,7 +29,7 @@ function* recuperarSenha({ payload }) {
     yield call(api.post, '/auth/recovery', { email: payload });
     yield put(Actions.recuperarSenhaSuccess(payload));
 
-    window.location.href = '/auth/confirm-email';
+    yield call(history.push, '/confirmar-solicitacao');
   } catch (error) {
     if (_.has(error, 'response.data.error.email[0]')) {
       console.log('Error: ', error.response.data.error.email[0]);
@@ -38,8 +38,8 @@ function* recuperarSenha({ payload }) {
   }
 }
 
-export function logout() {
-  window.location.href = '/auth/login';
+function* logout() {
+  yield call(history.push, '/');
 }
 
 export default all([
