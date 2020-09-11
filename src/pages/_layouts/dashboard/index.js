@@ -125,6 +125,7 @@ class DashboardLayout extends React.Component {
 
   render() {
     const { items, footerItems, footerTitle, collapsed } = this.state;
+    const { profile } = this.props;
 
     return (
       <>
@@ -483,8 +484,12 @@ class DashboardLayout extends React.Component {
                     alt="user"
                   />
                   <div className="caption">
-                    <h6 className="mb-0 line-height text-white">Nik jone</h6>
-                    <span className="font-size-12 text-white">Available</span>
+                    <h6 className="mb-0 line-height text-white">
+                      {profile.name}
+                    </h6>
+                    <span className="font-size-12 text-white">
+                      {profile.email}
+                    </span>
                   </div>
                 </a>
                 <div className="iq-sub-dropdown iq-user-dropdown">
@@ -492,13 +497,13 @@ class DashboardLayout extends React.Component {
                     <div className="iq-card-body p-0 ">
                       <div className="bg-primary p-3">
                         <h5 className="mb-0 text-white line-height">
-                          Hello Nik jone
+                          {profile.name}
                         </h5>
                         <span className="text-white font-size-12">
-                          Available
+                          {profile.email}
                         </span>
                       </div>
-                      <a href="#" className="iq-sub-card iq-bg-primary-hover">
+                      {/* <a href="#" className="iq-sub-card iq-bg-primary-hover">
                         <div className="media align-items-center">
                           <div className="rounded iq-card-icon iq-bg-primary">
                             <i className="ri-file-user-line"></i>
@@ -549,7 +554,7 @@ class DashboardLayout extends React.Component {
                             </p>
                           </div>
                         </div>
-                      </a>
+                      </a> */}
                       <div className="d-inline-block w-100 text-center p-3">
                         <button
                           type="button"
@@ -578,7 +583,9 @@ class DashboardLayout extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    profile: state.user.profile,
+  };
 };
 
 export default connect(mapStateToProps, { logoutRequest })(DashboardLayout);
