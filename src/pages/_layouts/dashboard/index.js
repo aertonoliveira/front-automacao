@@ -142,48 +142,6 @@ class DashboardLayout extends React.Component {
             logo={require('../../../assets/images/logo.gif')}
             breadCrumb={items}
           >
-            <div className="navbar-left">
-              <ul id="topbar-data-icon" className="d-flex p-0 topbar-menu-icon">
-                {this.state.topNavBar.map((item, index) => (
-                  <li className="nav-item" key={index}>
-                    <Link
-                      to={item.link}
-                      className="nav-link font-weight-bold search-box-toggle"
-                    >
-                      <i className={item.icon}></i>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <div className="iq-search-bar">
-                <form action="#" className="searchbox">
-                  <input
-                    type="text"
-                    className="text search-input"
-                    placeholder="Type here to search..."
-                  />
-                  <a className="search-link" href="#">
-                    <i className="ri-search-line"></i>
-                  </a>
-                  <div className="searchbox-datalink">
-                    <h6 className="pl-3 pt-3">Pages</h6>
-                    <ul className="m-0 pl-3 pr-3 pb-3">
-                      {this.state.searchItem.map((item, index) => (
-                        <li className="iq-bg-primary-hover rounded" key={index}>
-                          <Link
-                            to={item.href}
-                            className="nav-link router-link-exact-active router-link-active pr-2"
-                          >
-                            <i className={item.icon}></i>
-                            {item.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </form>
-              </div>
-            </div>
             <button
               className="navbar-toggler"
               type="button"
@@ -203,62 +161,6 @@ class DashboardLayout extends React.Component {
             </div>
             <Collapse isOpen={collapsed} navbar>
               <ul className="navbar-nav ml-auto navbar-list">
-                <li className="nav-item">
-                  <a
-                    className="search-toggle iq-waves-effect language-title"
-                    href="#"
-                  >
-                    <img
-                      src={require('../../../assets/images/small/flag-01.png')}
-                      alt="img-flaf"
-                      className="img-fluid mr-1 height-16"
-                    />
-                    English
-                    <i className="ri-arrow-down-s-line"></i>
-                  </a>
-                  <div className="iq-sub-dropdown">
-                    <a className="iq-sub-card" href="#">
-                      <img
-                        src={require('../../../assets/images/small/flag-02.png')}
-                        alt="img-flaf"
-                        className="img-fluid mr-2"
-                      />
-                      French
-                    </a>
-                    <a className="iq-sub-card" href="#">
-                      <img
-                        src={require('../../../assets/images/small/flag-03.png')}
-                        alt="img-flaf"
-                        className="img-fluid mr-2"
-                      />
-                      Spanish
-                    </a>
-                    <a className="iq-sub-card" href="#">
-                      <img
-                        src={require('../../../assets/images/small/flag-04.png')}
-                        alt="img-flaf"
-                        className="img-fluid mr-2"
-                      />
-                      Italian
-                    </a>
-                    <a className="iq-sub-card" href="#">
-                      <img
-                        src={require('../../../assets/images/small/flag-05.png')}
-                        alt="img-flaf"
-                        className="img-fluid mr-2"
-                      />
-                      German
-                    </a>
-                    <a className="iq-sub-card" href="#">
-                      <img
-                        src={require('../../../assets/images/small/flag-06.png')}
-                        alt="img-flaf"
-                        className="img-fluid mr-2"
-                      />
-                      Japanese
-                    </a>
-                  </div>
-                </li>
                 <li className="nav-item">
                   <a className="search-toggle iq-waves-effect" href="#">
                     <i className="ri-calendar-line"></i>
@@ -515,46 +417,7 @@ class DashboardLayout extends React.Component {
                             </p>
                           </div>
                         </div>
-                      </a>
-                      <a href="#" className="iq-sub-card iq-bg-primary-hover">
-                        <div className="media align-items-center">
-                          <div className="rounded iq-card-icon iq-bg-primary">
-                            <i className="ri-profile-line"></i>
-                          </div>
-                          <div className="media-body ml-3">
-                            <h6 className="mb-0 ">Edit Profile</h6>
-                            <p className="mb-0 font-size-12">
-                              Modify your personal details.
-                            </p>
-                          </div>
-                        </div>
-                      </a>
-                      <a href="#" className="iq-sub-card iq-bg-primary-hover">
-                        <div className="media align-items-center">
-                          <div className="rounded iq-card-icon iq-bg-primary">
-                            <i className="ri-account-box-line"></i>
-                          </div>
-                          <div className="media-body ml-3">
-                            <h6 className="mb-0 ">Account settings</h6>
-                            <p className="mb-0 font-size-12">
-                              Manage your account parameters.
-                            </p>
-                          </div>
-                        </div>
-                      </a>
-                      <a href="#" className="iq-sub-card iq-bg-primary-hover">
-                        <div className="media align-items-center">
-                          <div className="rounded iq-card-icon iq-bg-primary">
-                            <i className="ri-lock-line"></i>
-                          </div>
-                          <div className="media-body ml-3">
-                            <h6 className="mb-0 ">Privacy Settings</h6>
-                            <p className="mb-0 font-size-12">
-                              Control your privacy parameters.
-                            </p>
-                          </div>
-                        </div>
-                      </a> */}
+                      </a>*/}
                       <div className="d-inline-block w-100 text-center p-3">
                         <button
                           type="button"
