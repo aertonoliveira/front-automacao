@@ -8,6 +8,7 @@ import ConfirmMailPage from '../pages/ConfirmMailPage';
 import NewPassword from '../pages/NewPassword';
 
 import Dashboard from '../pages/Dashboard';
+import Clientes from '../pages/Clientes';
 
 export default function Router() {
   return (
@@ -18,6 +19,7 @@ export default function Router() {
       <Route path="/criar-nova-senha/:token" component={NewPassword} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/clientes" component={Clientes} isPrivate />
     </Switch>
   );
 }
