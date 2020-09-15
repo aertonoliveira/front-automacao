@@ -17,6 +17,8 @@ import {
   Label,
 } from 'reactstrap';
 
+import { cadastroClienteRequest } from '../../store/modules/clientes/actions';
+
 const Clientes = () => {
   // Validação
   let validationSchema = useMemo(
@@ -34,11 +36,10 @@ const Clientes = () => {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, errors } = useForm({ resolver });
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.auth.loading);
+  const isLoading = useSelector((state) => state.cliente.loading);
 
-  const handleLogin = (data) => {
-    console.log(data);
-    //dispatch(recuperarSenhaRequest(email));
+  const cadastrarCliente = (data) => {
+    dispatch(cadastroClienteRequest(data));
   };
 
   return (
@@ -51,7 +52,7 @@ const Clientes = () => {
                 <h4>Basic Form</h4>
               </CardTitle>
             </div>
-            <Form className="mt-4" onSubmit={handleSubmit(handleLogin)}>
+            <Form className="mt-4" onSubmit={handleSubmit(cadastrarCliente)}>
               <CardBody className={'iq-card-body'}>
                 <Row>
                   <Col sm={12} lg={3}>
@@ -344,7 +345,7 @@ const Clientes = () => {
                   color="primary"
                   className="btn btn-primary"
                 >
-                  Cadastrar
+                  {isLoading ? 'Carregando...' : 'Cadastrar'}
                 </button>
               </CardBody>
             </Form>
