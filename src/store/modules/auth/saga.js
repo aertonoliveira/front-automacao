@@ -14,7 +14,7 @@ function* login({ payload }) {
     const response = yield call(api.post, '/auth/login', { email, password });
 
     const { token, data } = response.data;
-    api.defaults.headers.Authorization = `Beader ${token}`;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(Actions.loginSuccess(token, data));
 
@@ -42,7 +42,18 @@ function* logout() {
   yield call(history.push, '/');
 }
 
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest(Types.AUTH_LOGIN, login),
   takeLatest(Types.AUTH_RECUPERAR_SENHA_REQUEST, recuperarSenha),
   takeLatest(Types.AUTH_LOGOUT, logout),

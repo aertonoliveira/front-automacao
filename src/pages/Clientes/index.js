@@ -162,7 +162,6 @@ const Clientes = () => {
                       <Label htmlFor="estado_civil">Estado Civil</Label>
                       <select
                         className="form-control mb-3"
-                        bsSize="lg"
                         name="estado_civil"
                         ref={register}
                       >
