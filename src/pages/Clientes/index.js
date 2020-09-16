@@ -25,6 +25,27 @@ const Clientes = () => {
     () =>
       yup.object({
         nome: yup.string().required('Por favor, informe seu nome'),
+        cpf: yup.string().required('Por favor, informe seu CPF'),
+        rg: yup.string().required('Por favor, informe seu rg'),
+        data_emissao: yup.string().required('Por favor, informe seu data_emissao'),
+        orgao_emissor: yup.string().required('Por favor, informe o orgao emissor'),
+        data_nascimento: yup.string().required('Por favor, informe a data do seu nascimento'),
+        estado_civil: yup.string().required('Por favor, informe seu estado civil'),
+        nome_mae: yup.string().required('Por favor, informe o nome de sua mãe'),
+        genero: yup.string().required('Por favor, informe seu genero'),
+        telefone: yup.string().required('Por favor, informe seu telefone'),
+        cep: yup.string().required('Por favor, informe seu cep'),
+        bairro: yup.string().required('Por favor, informe seu bairro'),
+        confirm_password: yup.string().required('Por favor, confirme sua senha'),
+        endereco: yup.string().required('Por favor, informe seu endereco'),
+        estado: yup.string().required('Por favor, informe seu estado'),
+        genero: yup.string().required('Por favor, informe seu genero'),
+        numero: yup.string().required('Por favor, informe seu numero'),
+        profissao: yup.string().required('Por favor, informe seu profissao'),
+        telefone: yup.string().required('Por favor, informe seu telefone'),
+        celular: yup.string().required('Por favor, informe seu celular'),
+
+
         email: yup
           .string()
           .email('Por favor, informe um endereço de e-mail válido')
@@ -39,6 +60,7 @@ const Clientes = () => {
   const isLoading = useSelector((state) => state.cliente.loading);
 
   const cadastrarCliente = (data) => {
+    console.log(data);
     dispatch(cadastroClienteRequest(data));
   };
 
@@ -94,8 +116,13 @@ const Clientes = () => {
                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
-                      <Label htmlFor="cpf">CPF</Label>
+
+                    <div
+                      className={
+                        'form-group ' + (errors.cpf ? 'has-error' : '')
+                      }
+                    >
+                    <Label htmlFor="cpf">CPF</Label>
                       <input
                         type="string"
                         placeholder="CPF"
@@ -103,10 +130,18 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                      {errors.cpf && (
+                        <div className="help-block">{errors.cpf.message}</div>
+                      )}
+                    </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+                  <div
+                      className={
+                        'form-group ' + (errors.rg ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="rg">RG</Label>
                       <input
                         type="string"
@@ -115,13 +150,21 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+
+                     {errors.rg && (
+                        <div className="help-block">{errors.rg.message}</div>
+                      )}
+                     </div>
                   </Col>
                 </Row>
 
                 <Row>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+                  <div
+                      className={
+                        'form-group ' + (errors.data_emissao ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="data_emissao">Data de Emissão</Label>
                       <input
                         type="date"
@@ -129,10 +172,19 @@ const Clientes = () => {
                         name="data_emissao"
                         ref={register}
                       />
-                    </FormGroup>
+                   {errors.data_emissao && (
+                        <div className="help-block">{errors.data_emissao.message}</div>
+                      )}
+                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+
+                  <div
+                      className={
+                        'form-group ' + (errors.orgao_emissor ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="orgao_emissor">Orgão Emissor</Label>
                       <input
                         type="text"
@@ -141,10 +193,18 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                      {errors.orgao_emissor && (
+                        <div className="help-block">{errors.orgao_emissor.message}</div>
+                      )}
+                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+                  <div
+                      className={
+                        'form-group ' + (errors.data_nascimento ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="data_nascimento">
                         Data de Nascimento
                       </Label>
@@ -155,10 +215,18 @@ const Clientes = () => {
                         name="data_nascimento"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.data_nascimento && (
+                        <div className="help-block">{errors.data_nascimento.message}</div>
+                      )}
+                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+                  <div
+                      className={
+                        'form-group ' + (errors.estado_civil ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="estado_civil">Estado Civil</Label>
                       <select
                         className="form-control mb-3"
@@ -170,12 +238,20 @@ const Clientes = () => {
                         <option defaultValue="Divorciado">Divorciado</option>
                         <option defaultValue="Viúvo">Viúvo</option>
                       </select>
-                    </FormGroup>
+                      {errors.estado_civil && (
+                  <div className="help-block">{errors.estado_civil.message}</div>
+                      )}
+                     </div>
                   </Col>
                 </Row>
+
                 <Row>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+                      <div
+                      className={
+                        'form-group ' + (errors.nome_mae ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="nome_mae">Nome da Mãe</Label>
                       <input
                         type="text"
@@ -184,10 +260,19 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                   {errors.nome_mae && (
+                  <div className="help-block">{errors.nome_mae.message}</div>
+                      )}
+                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+
+                  <div
+                      className={
+                        'form-group ' + (errors.genero ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="genero">Gênero</Label>
                       <input
                         type="text"
@@ -196,10 +281,19 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.genero && (
+                  <div className="help-block">{errors.genero.message}</div>
+                      )}
+                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+
+                  <div
+                      className={
+                        'form-group ' + (errors.telefone ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="telefone">Telefone</Label>
                       <input
                         type="number"
@@ -208,10 +302,19 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.telefone && (
+                  <div className="help-block">{errors.telefone.message}</div>
+                      )}
+                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+
+                  <div
+                      className={
+                        'form-group ' + (errors.celular ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="celular">Celular</Label>
                       <input
                         type="number"
@@ -220,13 +323,20 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.celular && (
+                  <div className="help-block">{errors.celular.message}</div>
+                      )}
+                     </div>
                   </Col>
                 </Row>
 
                 <Row>
                   <Col sm={12} lg={6}>
-                    <FormGroup>
+                  <div
+                      className={
+                        'form-group ' + (errors.password ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="password">Senha</Label>
                       <input
                         type="password"
@@ -234,10 +344,18 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                   {errors.password && (
+                  <div className="help-block">{errors.password.message}</div>
+                      )}
+                  </div>
                   </Col>
+
                   <Col sm={12} lg={6}>
-                    <FormGroup>
+                  <div
+                      className={
+                        'form-group ' + (errors.confirm_password ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="confirm_password">Confirme senha</Label>
                       <input
                         type="password"
@@ -245,13 +363,20 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.confirm_password && (
+                  <div className="help-block">{errors.confirm_password.message}</div>
+                      )}
+                  </div>
                   </Col>
                 </Row>
 
                 <Row>
                   <Col sm={12} lg={4}>
-                    <FormGroup>
+                  <div
+                      className={
+                        'form-group ' + (errors.profissao? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="profissao">Profissão</Label>
                       <input
                         type="string"
@@ -260,10 +385,18 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.profissao && (
+                  <div className="help-block">{errors.profissao.message}</div>
+                      )}
+                  </div>
                   </Col>
                   <Col sm={12} lg={4}>
-                    <FormGroup>
+
+                  <div
+                      className={
+                        'form-group ' + (errors.cep ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="cep">CEP</Label>
                       <input
                         type="string"
@@ -272,10 +405,18 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                   {errors.cep && (
+                  <div className="help-block">{errors.cep.message}</div>
+                      )}
+                      </div>
                   </Col>
                   <Col sm={12} lg={4}>
-                    <FormGroup>
+
+                  <div
+                      className={
+                        'form-group ' + (errors.endereco ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="endereco">Endereço</Label>
                       <input
                         type="text"
@@ -284,13 +425,20 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                  {errors.endereco && (
+                  <div className="help-block">{errors.endereco.message}</div>
+                      )}
+                      </div>
                   </Col>
                 </Row>
 
                 <Row>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+                  <div
+                      className={
+                        'form-group ' + (errors.complemento ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="complemento">Complemento</Label>
                       <input
                         type="text"
@@ -299,10 +447,17 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.complemento && (
+                  <div className="help-block">{errors.complemento.message}</div>
+                      )}
+                      </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+                  <div
+                      className={
+                        'form-group ' + (errors.numero? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="numero">Número</Label>
                       <input
                         type="string"
@@ -311,10 +466,18 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.numero && (
+                  <div className="help-block">{errors.numero.message}</div>
+                      )}
+                      </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+                  <div
+                      className={
+                        'form-group ' + (errors.bairro ? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="bairro">Bairro</Label>
                       <input
                         type="text"
@@ -323,10 +486,18 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                    {errors.bairro && (
+                  <div className="help-block">{errors.bairro.message}</div>
+                      )}
+                      </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <FormGroup>
+
+                  <div
+                      className={
+                        'form-group ' + (errors.estado? 'has-error' : '')
+                      }
+                    >
                       <Label htmlFor="estado">Estado</Label>
                       <input
                         type="text"
@@ -335,7 +506,10 @@ const Clientes = () => {
                         className="form-control"
                         ref={register}
                       />
-                    </FormGroup>
+                   {errors.estado && (
+                  <div className="help-block">{errors.estado.message}</div>
+                      )}
+                      </div>
                   </Col>
                 </Row>
 
