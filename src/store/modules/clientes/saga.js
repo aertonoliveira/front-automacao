@@ -17,4 +17,19 @@ function* cadastroCliente(action) {
   }
 }
 
-export default all([takeLatest(Types.CADASTRO_CLIENTE, cadastroCliente)]);
+function* listagemCliente(action) {
+  try {
+    const data = action.payload;
+
+    const response = yield call(api.get, '/cliente/'+data.type+"?page="+data.page);
+    
+    yield put(Actions.listagemClienteSuccess(response.data));
+  } catch (error) {
+    yield put(Actions.listagemClienteFailure());
+  }
+}
+
+export default all([
+  takeLatest(Types.CADASTRO_CLIENTE, cadastroCliente),
+  takeLatest(Types.LISTAGEM_CLIENTES, listagemCliente)
+]);
