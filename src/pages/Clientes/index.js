@@ -22,7 +22,7 @@ const Clientes = () => {
   let validationSchema = useMemo(
     () =>
       yup.object({
-        nome: yup.string().required('Por favor, informe seu nome'),
+        type: yup.string().required('Por favor, informe seu nome'),
       }),
     []
   );
@@ -69,9 +69,11 @@ const Clientes = () => {
                       ref={register}
                     >
                       <option defaultValue="Analista Senior">Analista Senior</option>
-                      <option defaultValue="Casado">Casado</option>
-                      <option defaultValue="Divorciado">Divorciado</option>
-                      <option defaultValue="Viúvo">Viúvo</option>
+                      <option defaultValue="Gestor de analista">Gestor de analista</option>
+                      <option defaultValue="Analista pleno">Analista pleno</option>
+                      <option defaultValue="Cliente">Cliente</option>
+                      <option defaultValue="Parceiro">Parceiro</option>
+                      <option defaultValue="Trader">Trader</option>
                     </select>
                   </Col>
 
@@ -112,13 +114,11 @@ const Clientes = () => {
                               <th scope="row">{cliente.id}</th>
                               <td>{cliente.name}</td>
                               <td>{cliente.cpf}</td>
-                              <td>Cell</td>
-                              <td>Cell</td>
-                              <td>Cell</td>
-                              <td>Cell</td>
-                              <td>Cell</td>
-                              <td>Cell</td>
-                              <td>Cell</td>
+                              <td>{cliente.email}</td>
+                              <td>{cliente.celular}</td>
+                              <td>{cliente.ativo}</td>
+                              <td>{cliente.saldo_conta.valor}</td>
+                              <td>{cliente.parent.name}</td>
                             </tr>
                           ))
                         }

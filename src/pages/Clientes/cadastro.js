@@ -24,7 +24,7 @@ const CadastroClientes = () => {
   let validationSchema = useMemo(
     () =>
       yup.object({
-        nome: yup.string().required('Por favor, informe seu nome'),
+        name: yup.string().required('Por favor, informe seu nome'),
         cpf: yup.string().required('Por favor, informe seu CPF'),
         rg: yup.string().required('Por favor, informe seu rg'),
         data_emissao: yup.string().required('Por favor, informe a data de emissão'),
@@ -44,6 +44,8 @@ const CadastroClientes = () => {
         profissao: yup.string().required('Por favor, informe seu profissão'),
         telefone: yup.string().required('Por favor, informe seu telefone'),
         celular: yup.string().required('Por favor, informe seu celular'),
+       role_id: yup.string().required('Por favor, informe seu role_id'),
+
 
 
 
@@ -81,19 +83,19 @@ const CadastroClientes = () => {
                   <Col sm={12} lg={3}>
                     <div
                       className={
-                        'form-group ' + (errors.nome ? 'has-error' : '')
+                        'form-group ' + (errors.name ? 'has-error' : '')
                       }
                     >
-                      <Label htmlFor="nome">Nome Completo</Label>
+                      <Label htmlFor="name">Nome Completo</Label>
                       <input
                         type="text"
                         placeholder="Nome completo"
-                        name="nome"
+                        name="name"
                         className="form-control"
                         ref={register}
                       />
-                      {errors.nome && (
-                        <div className="help-block">{errors.nome.message}</div>
+                      {errors.name && (
+                        <div className="help-block">{errors.name.message}</div>
                       )}
                     </div>
                   </Col>
@@ -234,6 +236,7 @@ const CadastroClientes = () => {
                         name="estado_civil"
                         ref={register}
                       >
+                        <option defaultValue="/"></option>
                         <option defaultValue="Solteiro">Solteiro</option>
                         <option defaultValue="Casado">Casado</option>
                         <option defaultValue="Divorciado">Divorciado</option>
@@ -372,7 +375,33 @@ const CadastroClientes = () => {
                 </Row>
 
                 <Row>
-                  <Col sm={12} lg={4}>
+                  <Col sm={12} lg={3}>
+                  <div
+                      className={
+                        'form-group ' + (errors.role_id ? 'has-error' : '')
+                      }
+                    >
+                    <Label htmlFor="role_id">Cargo</Label>
+                        <select
+                          className="form-control mb-3"
+                          name="role_id"
+                          ref={register}
+                        >
+                      <option defaultValue="/"></option>
+                      <option defaultValue="Analista Senior">Analista Senior</option>
+                      <option defaultValue="Gestor de analista">Gestor de analista</option>
+                      <option defaultValue="Analista pleno">Analista pleno</option>
+                      <option defaultValue="Cliente">Cliente</option>
+                      <option defaultValue="Parceiro">Parceiro</option>
+                      <option defaultValue="Trader">Trader</option>
+                      </select>
+                      {errors.role_id && (
+                   <div className="help-block">{errors.role_id.message}</div>
+                      )}
+                    </div>
+                    </Col>
+
+                    <Col sm={12} lg={3}>
                   <div
                       className={
                         'form-group ' + (errors.profissao? 'has-error' : '')
@@ -391,7 +420,7 @@ const CadastroClientes = () => {
                       )}
                   </div>
                   </Col>
-                  <Col sm={12} lg={4}>
+                  <Col sm={12} lg={3}>
 
                   <div
                       className={
@@ -411,7 +440,7 @@ const CadastroClientes = () => {
                       )}
                       </div>
                   </Col>
-                  <Col sm={12} lg={4}>
+                  <Col sm={12} lg={3}>
 
                   <div
                       className={
