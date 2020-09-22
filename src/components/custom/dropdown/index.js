@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ButtonDropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import CadastrarProduto from '../../../pages/Produtos/CadastrarProduto';
 
-export default function Dropdown({ options }) {
+export default function Dropdown({ clienteId, options }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -35,7 +35,11 @@ export default function Dropdown({ options }) {
         </DropdownMenu>
       </ButtonDropdown>
 
-      <CadastrarProduto open={modalOpen} setOpen={setModalOpen} />
+      <CadastrarProduto
+        clienteId={clienteId}
+        open={modalOpen}
+        setOpen={setModalOpen}
+      />
     </>
   );
 }

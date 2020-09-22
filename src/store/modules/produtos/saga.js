@@ -7,9 +7,7 @@ import * as Types from './types';
 
 function* cadastroProduto(action) {
   try {
-    const data = action.payload;
-
-    const response = yield call(api.post, '/produto', data);
+    const response = yield call(api.post, '/produto', action.payload);
 
     yield put(Actions.cadastroProdutoSuccess(response.data));
   } catch (error) {
@@ -19,12 +17,7 @@ function* cadastroProduto(action) {
 
 function* listagemProdutos(action) {
   try {
-    const data = action.payload;
-
-    const response = yield call(
-      api.get,
-      '/produtos/' + data.type + '?page=' + data.page
-    );
+    const response = yield call(api.get, '/produto');
 
     yield put(Actions.listagemProdutosSuccess(response.data));
   } catch (error) {

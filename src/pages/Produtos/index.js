@@ -1,33 +1,25 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { Row, Col, Card, CardTitle, CardBody, Form } from 'reactstrap';
 import { formatPrice } from '../../utils/FormatPrice';
 
-import produtos from './lista.json';
 import Dropdown from '../../components/custom/dropdown';
-import CadastrarProduto from './CadastrarProduto';
+// import CadastrarProduto from './CadastrarProduto';
+import { listagemProdutosRequest } from '../../store/modules/produtos/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Produtos = () => {
-  const [listaProdutos, setListaProdutos] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
+  const produtos = useSelector((state) => state.produto.listagemProdutos);
+  const dispatch = useDispatch();
 
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
-  };
+  // const toggleModal = () => {
+  //   setModalOpen(!modalOpen);
+  // };
 
   useEffect(() => {
-    const produtosTratados = produtos.data.map((produto) => ({
-      id: produto.id,
-      nome_cliente: produto.user.name,
-      valor: parseFloat(produto.valor),
-      valor_atualizado: parseFloat(produto.valor_atualizado),
-      porcentagem: produto.porcentagem,
-      tipo_contrato: produto.tipo_contrato,
-    }));
-
-    setListaProdutos(produtosTratados);
-  }, []);
+    dispatch(listagemProdutosRequest());
+  }, [dispatch]);
 
   return (
     <>
@@ -39,14 +31,14 @@ const Produtos = () => {
                 <h4>Listagem de produtos</h4>
               </CardTitle>
 
-              <button
+              {/* <button
                 type="button"
                 className="btn btn-primary float-right"
                 onClick={() => toggleModal(true)}
               >
                 Cadastrar
               </button>
-              <CadastrarProduto open={modalOpen} setOpen={toggleModal} />
+              <CadastrarProduto open={modalOpen} setOpen={toggleModal} /> */}
             </div>
             <Form>
               <CardBody className="iq-card-body">
@@ -65,17 +57,18 @@ const Produtos = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {listaProdutos &&
-                          listaProdutos.map((produto, index) => (
+                        {produtos &&
+                          produtos.data.map((produto, index) => (
                             <tr key={index}>
                               <th scope="row">{produto.id}</th>
-                              <td>{produto.nome_cliente}</td>
+                              <td>{produto.user.name}</td>
                               <td>{formatPrice(produto.valor)}</td>
                               <td>{formatPrice(produto.valor_atualizado)}</td>
                               <td>{produto.porcentagem} %</td>
                               <td>{produto.tipo_contrato}</td>
                               <td>
                                 <Dropdown
+                                  clienteId={produto.user.id}
                                   options={[
                                     {
                                       title: 'Visualizar',

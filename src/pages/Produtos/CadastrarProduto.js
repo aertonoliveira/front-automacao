@@ -16,13 +16,13 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-const CadastrarProduto = ({ open, setOpen }) => {
+const CadastrarProduto = ({ clienteId, open, setOpen }) => {
   let validationSchema = useMemo(
     () =>
       yup.object({
         valor: yup.string().required('Informe o valor'),
         porcentagem: yup.string().required('Informe a porcentagem'),
-        meses_contrato: yup
+        tempo_contrato: yup
           .string()
           .required('Informe a qtd. de meses contratados'),
         tipo_contrato: yup.string().required('Informe o tipo de contrato'),
@@ -35,6 +35,7 @@ const CadastrarProduto = ({ open, setOpen }) => {
   const { handleSubmit, register, errors } = useForm({ resolver });
 
   const handleCadastrarProduto = (data) => {
+    data.user_id = clienteId;
     dispatch(cadastroProdutoRequest(data));
   };
 
@@ -90,13 +91,13 @@ const CadastrarProduto = ({ open, setOpen }) => {
             <Col xs="12" md="6" lg="6">
               <div
                 className={
-                  'form-group ' + (errors.meses_contrato ? 'has-error' : '')
+                  'form-group ' + (errors.tempo_contrato ? 'has-error' : '')
                 }
               >
-                <label htmlFor="meses_contrato">Qtd. meses de contrato?</label>
+                <label htmlFor="tempo_contrato">Qtd. meses de contrato?</label>
                 <select
-                  name="meses_contrato"
-                  id="meses_contrato"
+                  name="tempo_contrato"
+                  id="tempo_contrato"
                   className="form-control"
                   ref={register}
                 >
@@ -105,9 +106,9 @@ const CadastrarProduto = ({ open, setOpen }) => {
                   <option value="12">12 meses</option>
                 </select>
 
-                {errors.meses_contrato && (
+                {errors.tempo_contrato && (
                   <div className="help-block">
-                    {errors.meses_contrato.message}
+                    {errors.tempo_contrato.message}
                   </div>
                 )}
               </div>
