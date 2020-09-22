@@ -10,6 +10,8 @@ import NewPassword from '../pages/NewPassword';
 import Dashboard from '../pages/Dashboard';
 import Clientes from '../pages/Clientes';
 import CadastroClientes from '../pages/Clientes/cadastro';
+import Produtos from '../pages/Produtos';
+import ProdutosVisualizar from '../pages/Produtos/ProdutosVisualizar';
 
 export default function Router() {
   return (
@@ -22,6 +24,14 @@ export default function Router() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/clientes" component={Clientes} isPrivate />
       <Route path="/cadastro-clientes" component={CadastroClientes} isPrivate />
+
+      <Route exact path="/produtos" component={Produtos} isPrivate />
+      <Route
+        exact
+        path="/produtos/visualizar/:id"
+        component={ProdutosVisualizar}
+        isPrivate
+      />
     </Switch>
   );
 }
