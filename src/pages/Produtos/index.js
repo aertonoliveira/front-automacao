@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Produtos = () => {
   // const [modalOpen, setModalOpen] = useState(false);
   const produtos = useSelector((state) => state.produto.listagemProdutos);
+  const loading = useSelector((state) => state.produto.loading);
   const dispatch = useDispatch();
 
   // const toggleModal = () => {
@@ -40,7 +41,14 @@ const Produtos = () => {
               </button>
               <CadastrarProduto open={modalOpen} setOpen={toggleModal} /> */}
             </div>
-            <Form>
+            {loading ? (
+              <img
+                width="100"
+                height="100"
+                src={require('../../assets/images/loading.gif')}
+                alt="Carregando..."
+              />
+            ) : (
               <CardBody className="iq-card-body">
                 <Row>
                   <Col sm={12}>
@@ -84,7 +92,7 @@ const Produtos = () => {
                   </Col>
                 </Row>
               </CardBody>
-            </Form>
+            )}
           </Card>
         </Col>
       </div>

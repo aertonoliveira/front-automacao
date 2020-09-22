@@ -9,6 +9,7 @@ function* cadastroProduto(action) {
   try {
     const response = yield call(api.post, '/produto', action.payload);
 
+    yield call(listagemProdutos);
     yield put(Actions.cadastroProdutoSuccess(response.data));
   } catch (error) {
     yield put(Actions.cadastroProdutoFailure());

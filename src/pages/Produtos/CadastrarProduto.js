@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import useYupValidationResolver from '../../hooks/useYupValidationResolver';
 import { cadastroProdutoRequest } from '../../store/modules/produtos/actions';
-
+import { useSelector } from 'react-redux';
 import {
   Row,
   Col,
@@ -33,6 +33,7 @@ const CadastrarProduto = ({ clienteId, open, setOpen }) => {
   const dispatch = useDispatch();
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, errors } = useForm({ resolver });
+  const loading = useSelector((state) => state.produto.loading);
 
   const handleCadastrarProduto = (data) => {
     data.user_id = clienteId;
@@ -48,103 +49,120 @@ const CadastrarProduto = ({ clienteId, open, setOpen }) => {
       >
         <ModalHeader>Cadastrar Produto</ModalHeader>
         <ModalBody>
-          <Row>
-            <Col xs="12" md="6" lg="6">
-              <div
-                className={'form-group ' + (errors.valor ? 'has-error' : '')}
-              >
-                <label htmlFor="valor">Valor do Investimento</label>
-                <input
-                  ref={register}
-                  type="text"
-                  name="valor"
-                  className="form-control"
-                />
-
-                {errors.valor && (
-                  <div className="help-block">{errors.valor.message}</div>
-                )}
-              </div>
-            </Col>
-
-            <Col xs="12" md="6" lg="6">
-              <div
-                className={
-                  'form-group ' + (errors.porcentagem ? 'has-error' : '')
-                }
-              >
-                <label htmlFor="porcentagem">Porcentagem</label>
-                <input
-                  id="porcentagem"
-                  ref={register}
-                  type="text"
-                  name="porcentagem"
-                  className="form-control"
-                />
-
-                {errors.porcentagem && (
-                  <div className="help-block">{errors.porcentagem.message}</div>
-                )}
-              </div>
-            </Col>
-
-            <Col xs="12" md="6" lg="6">
-              <div
-                className={
-                  'form-group ' + (errors.tempo_contrato ? 'has-error' : '')
-                }
-              >
-                <label htmlFor="tempo_contrato">Qtd. meses de contrato?</label>
-                <select
-                  name="tempo_contrato"
-                  id="tempo_contrato"
-                  className="form-control"
-                  ref={register}
+          {loading ? (
+            <img
+              width="100"
+              height="100"
+              src={require('../../assets/images/loading.gif')}
+              alt="Carregando..."
+            />
+          ) : (
+            <Row>
+              <Col xs="12" md="6" lg="6">
+                <div
+                  className={'form-group ' + (errors.valor ? 'has-error' : '')}
                 >
-                  <option value="">Selecione</option>
-                  <option value="6">6 meses</option>
-                  <option value="12">12 meses</option>
-                </select>
+                  <label htmlFor="valor">Valor do Investimento</label>
+                  <input
+                    ref={register}
+                    type="text"
+                    name="valor"
+                    className="form-control"
+                  />
 
-                {errors.tempo_contrato && (
-                  <div className="help-block">
-                    {errors.tempo_contrato.message}
-                  </div>
-                )}
-              </div>
-            </Col>
+                  {errors.valor && (
+                    <div className="help-block">{errors.valor.message}</div>
+                  )}
+                </div>
+              </Col>
 
-            <Col xs="12" md="6" lg="6">
-              <div
-                className={
-                  'form-group ' + (errors.tipo_contrato ? 'has-error' : '')
-                }
-              >
-                <label htmlFor="tipo_contrato">Tipo de contrato</label>
-                <select
-                  name="tipo_contrato"
-                  id="tipo_contrato"
-                  className="form-control"
-                  ref={register}
+              <Col xs="12" md="6" lg="6">
+                <div
+                  className={
+                    'form-group ' + (errors.porcentagem ? 'has-error' : '')
+                  }
                 >
-                  <option value="">Selecione</option>
-                  <option value="simples">Simples</option>
-                  <option value="composto">Composto</option>
-                </select>
+                  <label htmlFor="porcentagem">Porcentagem</label>
+                  <input
+                    id="porcentagem"
+                    ref={register}
+                    type="text"
+                    name="porcentagem"
+                    className="form-control"
+                  />
 
-                {errors.tipo_contrato && (
-                  <div className="help-block">
-                    {errors.tipo_contrato.message}
-                  </div>
-                )}
-              </div>
-            </Col>
-          </Row>
+                  {errors.porcentagem && (
+                    <div className="help-block">
+                      {errors.porcentagem.message}
+                    </div>
+                  )}
+                </div>
+              </Col>
+
+              <Col xs="12" md="6" lg="6">
+                <div
+                  className={
+                    'form-group ' + (errors.tempo_contrato ? 'has-error' : '')
+                  }
+                >
+                  <label htmlFor="tempo_contrato">
+                    Qtd. meses de contrato?
+                  </label>
+                  <select
+                    name="tempo_contrato"
+                    id="tempo_contrato"
+                    className="form-control"
+                    ref={register}
+                  >
+                    <option value="">Selecione</option>
+                    <option value="6">6 meses</option>
+                    <option value="12">12 meses</option>
+                  </select>
+
+                  {errors.tempo_contrato && (
+                    <div className="help-block">
+                      {errors.tempo_contrato.message}
+                    </div>
+                  )}
+                </div>
+              </Col>
+
+              <Col xs="12" md="6" lg="6">
+                <div
+                  className={
+                    'form-group ' + (errors.tipo_contrato ? 'has-error' : '')
+                  }
+                >
+                  <label htmlFor="tipo_contrato">Tipo de contrato</label>
+                  <select
+                    name="tipo_contrato"
+                    id="tipo_contrato"
+                    className="form-control"
+                    ref={register}
+                  >
+                    <option value="">Selecione</option>
+                    <option value="simples">Simples</option>
+                    <option value="composto">Composto</option>
+                  </select>
+
+                  {errors.tipo_contrato && (
+                    <div className="help-block">
+                      {errors.tipo_contrato.message}
+                    </div>
+                  )}
+                </div>
+              </Col>
+            </Row>
+          )}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" type="submit">
-            Adicionar
-          </Button>
+          {loading ? (
+            ''
+          ) : (
+            <Button color="primary" type="submit">
+              Adicionar
+            </Button>
+          )}
           <Button color="secondary" onClick={() => setOpen(false)}>
             Cancelar
           </Button>
