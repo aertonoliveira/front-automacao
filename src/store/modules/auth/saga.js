@@ -6,6 +6,7 @@ import history from '../../../services/history';
 import * as Actions from './actions';
 import * as Types from './types';
 
+import { toast } from 'react-toastify';
 import _ from 'lodash';
 
 function* login({ payload }) {
@@ -20,6 +21,7 @@ function* login({ payload }) {
 
     yield call(history.push, '/dashboard');
   } catch (error) {
+    toast.success('Ocorreu um erro ao tentar realizar o login!');
     yield put(Actions.loginFailure(error));
   }
 }
@@ -32,7 +34,7 @@ function* recuperarSenha({ payload }) {
     yield call(history.push, '/confirmar-solicitacao');
   } catch (error) {
     if (_.has(error, 'response.data.error.email[0]')) {
-      console.log('Error: ', error.response.data.error.email[0]);
+      toast.success(error.response.data.error.email[0]);
     }
     yield put(Actions.recuperarSenhaFailure(error));
   }
