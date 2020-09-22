@@ -5,13 +5,17 @@ import api from '../../../services/api';
 import * as Actions from './actions';
 import * as Types from './types';
 
+import { toast } from 'react-toastify';
+
 function* cadastroProduto(action) {
   try {
     const response = yield call(api.post, '/produto', action.payload);
 
     yield call(listagemProdutos);
+    toast.success('Produto cadastrado com sucesso!');
     yield put(Actions.cadastroProdutoSuccess(response.data));
   } catch (error) {
+    toast.success('Ocorreu um erro ao tentar cadastrar o produto!');
     yield put(Actions.cadastroProdutoFailure());
   }
 }
