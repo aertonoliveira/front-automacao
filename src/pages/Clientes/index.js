@@ -103,7 +103,6 @@ const Clientes = () => {
                           <th scope="col">Status</th>
                           <th scope="col">Cargo</th>
                           <th scope="col">Saldo</th>
-                          <th scope="col">Gerente</th>
                           <th scope="col"></th>
                         </tr>
                       </thead>
@@ -117,8 +116,8 @@ const Clientes = () => {
                               <td>{cliente.email}</td>
                               <td>{cliente.celular}</td>
                               <td>{cliente.ativo}</td>
-                              <td>{cliente.saldo_conta.valor}</td>
                               <td>{cliente.parent.name}</td>
+                              <td>{cliente.saldo_conta.valor}</td>
                               <td>
                                 <Dropdown clienteId={cliente.id} options={[]} />
                               </td>
