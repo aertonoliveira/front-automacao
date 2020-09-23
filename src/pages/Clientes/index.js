@@ -5,15 +5,8 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import useYupValidationResolver from '../../hooks/useYupValidationResolver';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Row,
-  Col,
-  Card,
-  CardTitle,
-  CardBody,
-  Form,
-  Label,
-} from 'reactstrap';
+import { Row, Col, Card, CardTitle, CardBody, Form } from 'reactstrap';
+import Dropdown from '../../components/custom/dropdown';
 
 import { listagemClienteRequest } from '../../store/modules/clientes/actions';
 
@@ -40,10 +33,10 @@ const Clientes = () => {
   useEffect(() => {
     const data = {
       type: 'Analista Senior',
-      page: 1
-    }
+      page: 1,
+    };
     dispatch(listagemClienteRequest(data));
-  }, [])
+  }, [dispatch]);
 
   return (
     <>
@@ -55,7 +48,10 @@ const Clientes = () => {
                 <h4>Listagem de clientes</h4>
               </CardTitle>
 
-              <Link className="btn btn-primary float-right" to="/cadastro-clientes">
+              <Link
+                className="btn btn-primary float-right"
+                to="/cadastro-clientes"
+              >
                 Cadastrar
               </Link>
             </div>
@@ -68,15 +64,20 @@ const Clientes = () => {
                       name="type"
                       ref={register}
                     >
-                      <option defaultValue="Analista Senior">Analista Senior</option>
-                      <option defaultValue="Gestor de analista">Gestor de analista</option>
-                      <option defaultValue="Analista pleno">Analista pleno</option>
+                      <option defaultValue="Analista Senior">
+                        Analista Senior
+                      </option>
+                      <option defaultValue="Gestor de analista">
+                        Gestor de analista
+                      </option>
+                      <option defaultValue="Analista pleno">
+                        Analista pleno
+                      </option>
                       <option defaultValue="Cliente">Cliente</option>
                       <option defaultValue="Parceiro">Parceiro</option>
                       <option defaultValue="Trader">Trader</option>
                     </select>
                   </Col>
-
 
                   <Col sm={12} lg={4} className="mt-4">
                     <button
@@ -86,13 +87,12 @@ const Clientes = () => {
                     >
                       {isLoading ? 'Carregando...' : 'Pesquisar'}
                     </button>
-
                   </Col>
                 </Row>
                 <Row>
                   <Col sm={12}>
                     {listagem == null ? 'chegou' : 'não chegou'}
-                    <table responsive className="table">
+                    <table className="table">
                       <thead>
                         <tr>
                           <th scope="col">ID</th>
@@ -104,12 +104,12 @@ const Clientes = () => {
                           <th scope="col">Cargo</th>
                           <th scope="col">Saldo</th>
                           <th scope="col">Gerente</th>
-                          <th scope="col">Ação</th>
+                          <th scope="col"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        {
-                          listagem && listagem.data.map((cliente, index) => (
+                        {listagem &&
+                          listagem.data.map((cliente, index) => (
                             <tr key={index}>
                               <th scope="row">{cliente.id}</th>
                               <td>{cliente.name}</td>
@@ -119,15 +119,15 @@ const Clientes = () => {
                               <td>{cliente.ativo}</td>
                               <td>{cliente.saldo_conta.valor}</td>
                               <td>{cliente.parent.name}</td>
+                              <td>
+                                <Dropdown clienteId={cliente.id} options={[]} />
+                              </td>
                             </tr>
-                          ))
-                        }
-
+                          ))}
                       </tbody>
                     </table>
                   </Col>
                 </Row>
-
               </CardBody>
             </Form>
           </Card>

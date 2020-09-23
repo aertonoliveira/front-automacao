@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Row, Col, Card, CardTitle, CardBody, Form } from 'reactstrap';
 import { formatPrice } from '../../utils/FormatPrice';
 
-import Dropdown from '../../components/custom/dropdown';
 // import CadastrarProduto from './CadastrarProduto';
 import { listagemProdutosRequest } from '../../store/modules/produtos/actions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,7 +60,6 @@ const Produtos = () => {
                           <th scope="col">Valor Atualizado</th>
                           <th scope="col">Procentagem</th>
                           <th scope="col">Tipo Contrato</th>
-                          <th scope="col"></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -74,17 +72,6 @@ const Produtos = () => {
                               <td>{formatPrice(produto.valor_atualizado)}</td>
                               <td>{produto.porcentagem} %</td>
                               <td>{produto.tipo_contrato}</td>
-                              <td>
-                                <Dropdown
-                                  clienteId={produto.user.id}
-                                  options={[
-                                    {
-                                      title: 'Visualizar',
-                                      link: `/produtos/visualizar/${produto.id}`,
-                                    },
-                                  ]}
-                                />
-                              </td>
                             </tr>
                           ))}
                       </tbody>
