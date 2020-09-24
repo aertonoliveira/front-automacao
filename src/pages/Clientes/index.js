@@ -21,7 +21,7 @@ const Clientes = () => {
   );
 
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, register, errors } = useForm({ resolver });
+  const { handleSubmit, register } = useForm({ resolver });
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.cliente.loading);
   const listagem = useSelector((state) => state.cliente.listagemClientes);
@@ -110,7 +110,7 @@ const Clientes = () => {
                               <td>{cliente.parent.name}</td>
                               <td>{cliente.saldo_conta.valor}</td>
                               <td>
-                                <Dropdown clienteId={cliente.id} options={[]} />
+                                <Dropdown clienteId={cliente.id} />
                               </td>
                             </tr>
                           ))}

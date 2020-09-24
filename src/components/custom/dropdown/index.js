@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 import { ButtonDropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import CadastrarProduto from '../../../pages/Produtos/CadastrarProduto';
+import VisualizarCliente from '../../../pages/Clientes/VisualizarCliente';
 
-export default function Dropdown({ clienteId, options }) {
+export default function Dropdown({ clienteId, cliente }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenAdicionarProduto, setModalOpenAdicionarProduto] = useState(
+    false
+  );
+
+  const [modalOpenVisualizarCliente, setModalOpenVisualizarCliente] = useState(
+    false
+  );
 
   const toggle = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
+  const toggleModalAdicionarProduto = () => {
+    setModalOpenAdicionarProduto(!modalOpenAdicionarProduto);
   };
+
+  const toggleModalVisualizarProduto = () => {
+    setModalOpenVisualizarCliente(!modalOpenVisualizarCliente);
+  };
+
+  useEffect(() => {
+    console.log('RETORNO: ', modalOpenVisualizarCliente);
+  }, [modalOpenVisualizarCliente]);
 
   return (
     <>
@@ -23,22 +37,33 @@ export default function Dropdown({ clienteId, options }) {
           Ações
         </DropdownToggle>
         <DropdownMenu>
-          <button type="button" className="dropdown-item" onClick={toggleModal}>
+          <button
+            type="button"
+            className="dropdown-item"
+            onClick={toggleModalAdicionarProduto}
+          >
             Adicionar
           </button>
-          {options &&
-            options.map((option, index) => (
-              <Link className="dropdown-item" key={index} to={option.link}>
-                {option.title}
-              </Link>
-            ))}
+          <button
+            type="button"
+            className="dropdown-item"
+            onClick={toggleModalVisualizarProduto}
+          >
+            Visualizar
+          </button>
         </DropdownMenu>
       </ButtonDropdown>
 
       <CadastrarProduto
         clienteId={clienteId}
-        open={modalOpen}
-        setOpen={setModalOpen}
+        open={modalOpenAdicionarProduto}
+        setOpen={setModalOpenAdicionarProduto}
+      />
+
+      <VisualizarCliente
+        clienteId={clienteId}
+        open={modalOpenVisualizarCliente}
+        setOpen={setModalOpenVisualizarCliente}
       />
     </>
   );
