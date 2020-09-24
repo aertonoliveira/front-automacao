@@ -41,10 +41,10 @@ const Clientes = () => {
   return (
     <>
       <div className="row">
-        <Col sm={12} lg={12}>
-          <Card className={'iq-card'}>
-            <div className={'iq-card-header d-flex justify-content-between'}>
-              <CardTitle className={'card-title'}>
+        <Col sm="12" lg="12">
+          <Card className="iq-card">
+            <div className="iq-card-header d-flex justify-content-between">
+              <CardTitle className="card-title">
                 <h4>Listagem de clientes</h4>
               </CardTitle>
 
@@ -56,42 +56,33 @@ const Clientes = () => {
               </Link>
             </div>
             <Form onSubmit={handleSubmit(listagemClientes)}>
-              <CardBody className={'iq-card-body'}>
-                <Row>
-                  <Col sm={12} lg={4}>
-                    <select
-                      className="form-control mb-3"
-                      name="type"
-                      ref={register}
-                    >
-                      <option defaultValue="Analista Senior">
-                        Analista Senior
-                      </option>
-                      <option defaultValue="Gestor de analista">
+              <CardBody className="iq-card-body">
+                <Row className="mb-4">
+                  <Col sm="12" md="6" lg="4">
+                    <select className="form-control" name="type" ref={register}>
+                      <option value="Analista Senior">Analista Senior</option>
+                      <option value="Gestor de analista">
                         Gestor de analista
                       </option>
-                      <option defaultValue="Analista pleno">
-                        Analista pleno
-                      </option>
-                      <option defaultValue="Cliente">Cliente</option>
-                      <option defaultValue="Parceiro">Parceiro</option>
-                      <option defaultValue="Trader">Trader</option>
+                      <option value="Analista pleno">Analista pleno</option>
+                      <option value="Cliente">Cliente</option>
+                      <option value="Parceiro">Parceiro</option>
+                      <option value="Trader">Trader</option>
                     </select>
                   </Col>
 
-                  <Col sm={12} lg={4} className="mt-4">
+                  <Col sm="12" md="6" lg="4">
                     <button
                       type="submit"
                       color="primary"
-                      className="btn btn-primary mt-3"
+                      className="btn btn-primary btn-lg"
                     >
                       {isLoading ? 'Carregando...' : 'Pesquisar'}
                     </button>
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={12}>
-                    {listagem == null ? 'chegou' : 'não chegou'}
+                  <Col sm="12">
                     <table className="table">
                       <thead>
                         <tr>
