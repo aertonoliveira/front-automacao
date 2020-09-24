@@ -17,7 +17,7 @@
     "link": "/clientes",
     "class_name": "",
     "is_icon_class": true,
-    "icon": "ri-home-4-line"
+    "icon": "ri-user-4-line"
   },
   {
     "title": "Produtos",
@@ -27,6 +27,6 @@
     "link": "/produtos",
     "class_name": "",
     "is_icon_class": true,
-    "icon": "ri-home-4-line"
+    "icon": "ri-briefcase-4-line"
   }
 ]

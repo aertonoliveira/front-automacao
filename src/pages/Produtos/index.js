@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react';
-import { Row, Col, Card, CardTitle, CardBody, Form } from 'reactstrap';
+import { Row, Col, Card, CardTitle, CardBody } from 'reactstrap';
 import { formatPrice } from '../../utils/FormatPrice';
 
 // import CadastrarProduto from './CadastrarProduto';
 import { listagemProdutosRequest } from '../../store/modules/produtos/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import Pagination from 'react-js-pagination';
 
 const Produtos = () => {
   // const [modalOpen, setModalOpen] = useState(false);
@@ -18,8 +19,12 @@ const Produtos = () => {
   // };
 
   useEffect(() => {
-    dispatch(listagemProdutosRequest());
+    dispatch(listagemProdutosRequest(1));
   }, [dispatch]);
+
+  const realizarPaginacao = (numeroPagina) => {
+    dispatch(listagemProdutosRequest(numeroPagina));
+  };
 
   return (
     <>
@@ -76,6 +81,20 @@ const Produtos = () => {
                           ))}
                       </tbody>
                     </table>
+                    {produtos && (
+                      <Pagination
+                        activePage={produtos.current_page}
+                        totalItemsCount={produtos.total}
+                        itemsCountPerPage={produtos.per_page}
+                        onChange={(numeroPagina) =>
+                          realizarPaginacao(numeroPagina)
+                        }
+                        itemClass="page-item"
+                        linkClass="page-link"
+                        firstPageText="Início"
+                        lastPageText="Fim"
+                      />
+                    )}
                   </Col>
                 </Row>
               </CardBody>

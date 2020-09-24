@@ -22,7 +22,8 @@ function* cadastroProduto(action) {
 
 function* listagemProdutos(action) {
   try {
-    const response = yield call(api.get, '/produto');
+    const numeroPagina = action.payload;
+    const response = yield call(api.get, '/produto?page=' + numeroPagina);
 
     yield put(Actions.listagemProdutosSuccess(response.data));
   } catch (error) {
