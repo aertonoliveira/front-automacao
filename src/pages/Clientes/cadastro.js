@@ -446,6 +446,7 @@ const CadastroClientes = () => {
                   </Col>
                   <Col sm={12} lg={3}>
                     <div
+
                       className={
                         'form-group ' + (errors.cep ? 'has-error' : '')
                       }
@@ -551,7 +552,8 @@ const CadastroClientes = () => {
                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-                    <div
+
+                  <div
                       className={
                         'form-group ' + (errors.estado ? 'has-error' : '')
                       }
