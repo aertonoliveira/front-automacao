@@ -17,6 +17,7 @@ import {
 } from 'reactstrap';
 
 import { cadastroClienteRequest } from '../../store/modules/clientes/actions';
+import { InputMask } from '../../components/custom/Inputs';
 
 const CadastroClientes = () => {
   // Validação
@@ -130,8 +131,9 @@ const CadastroClientes = () => {
                       }
                     >
                       <Label htmlFor="cpf">CPF</Label>
-                      <input
-                        type="string"
+                      <InputMask
+                        type="text"
+                        mask="999.999.999-99"
                         placeholder="CPF"
                         name="cpf"
                         className="form-control"
@@ -148,7 +150,7 @@ const CadastroClientes = () => {
                     >
                       <Label htmlFor="rg">RG</Label>
                       <input
-                        type="string"
+                        type="text"
                         placeholder="RG"
                         name="rg"
                         className="form-control"
@@ -306,9 +308,10 @@ const CadastroClientes = () => {
                       }
                     >
                       <Label htmlFor="telefone">Telefone</Label>
-                      <input
-                        type="number"
-                        placeholder="(55)5555-5555"
+                      <InputMask
+                        type="text"
+                        mask="(99) 9999-9999"
+                        placeholder="Telefone"
                         name="telefone"
                         className="form-control"
                         ref={register}
@@ -327,9 +330,10 @@ const CadastroClientes = () => {
                       }
                     >
                       <Label htmlFor="celular">Celular</Label>
-                      <input
-                        type="number"
-                        placeholder="(55)5555-5555"
+                      <InputMask
+                        type="text"
+                        mask="(99) 9 9999-9999"
+                        placeholder="Celular"
                         name="celular"
                         className="form-control"
                         ref={register}
@@ -431,7 +435,7 @@ const CadastroClientes = () => {
                     >
                       <Label htmlFor="profissao">Profissão</Label>
                       <input
-                        type="string"
+                        type="text"
                         placeholder="Profissão"
                         name="profissao"
                         className="form-control"
@@ -446,14 +450,14 @@ const CadastroClientes = () => {
                   </Col>
                   <Col sm={12} lg={3}>
                     <div
-
                       className={
                         'form-group ' + (errors.cep ? 'has-error' : '')
                       }
                     >
                       <Label htmlFor="cep">CEP</Label>
-                      <input
-                        type="string"
+                      <InputMask
+                        type="text"
+                        mask="99999-999"
                         placeholder="CEP"
                         name="cep"
                         className="form-control"
@@ -517,7 +521,7 @@ const CadastroClientes = () => {
                     >
                       <Label htmlFor="numero">Número</Label>
                       <input
-                        type="string"
+                        type="text"
                         placeholder="Número"
                         name="numero"
                         className="form-control"
@@ -552,8 +556,7 @@ const CadastroClientes = () => {
                     </div>
                   </Col>
                   <Col sm={12} lg={3}>
-
-                  <div
+                    <div
                       className={
                         'form-group ' + (errors.estado ? 'has-error' : '')
                       }
