@@ -18,6 +18,7 @@ function useCombinedRefs(...refs) {
 
   return targetRef;
 }
+
 export const InputMask = React.forwardRef((props, ref) => {
   const innerRef = React.useRef(null);
   const combinedRef = useCombinedRefs(ref, innerRef);
@@ -30,6 +31,31 @@ export const InputMask = React.forwardRef((props, ref) => {
       value={input}
       onChange={(event) => {
         setInput(maskJs(props.mask, event.target.value.replace(/[^0-9]/g, '')));
+      }}
+    />
+  );
+});
+
+export const CurrencyMask = React.forwardRef((props, ref) => {
+  const innerRef = React.useRef(null);
+  const combinedRef = useCombinedRefs(ref, innerRef);
+  const [input, setInput] = React.useState('');
+
+  const handleCurrency = (value) => {
+    value = value.replace(/\D/g, '');
+    value = value.replace(/(\d)(\d{2})$/, '$1,$2');
+    value = value.replace(/(?=(\d{3})+(\D))\B/g, '.');
+
+    return value;
+  };
+
+  return (
+    <input
+      {...props}
+      ref={combinedRef}
+      value={input}
+      onChange={(event) => {
+        setInput(handleCurrency(event.currentTarget.value));
       }}
     />
   );

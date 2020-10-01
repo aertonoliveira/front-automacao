@@ -15,6 +15,8 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import { CurrencyMask } from '../../components/custom/Inputs';
+import { removeCurrencyMask } from '../../utils/Functions';
 
 const CadastrarProduto = ({ clienteId, open, setOpen }) => {
   let validationSchema = useMemo(
@@ -37,6 +39,8 @@ const CadastrarProduto = ({ clienteId, open, setOpen }) => {
 
   const handleCadastrarProduto = (data) => {
     data.user_id = clienteId;
+    data.valor = removeCurrencyMask(data.valor);
+
     dispatch(cadastroProdutoRequest(data));
   };
 
@@ -63,7 +67,7 @@ const CadastrarProduto = ({ clienteId, open, setOpen }) => {
                   className={'form-group ' + (errors.valor ? 'has-error' : '')}
                 >
                   <label htmlFor="valor">Valor do Investimento</label>
-                  <input
+                  <CurrencyMask
                     ref={register}
                     type="text"
                     name="valor"
