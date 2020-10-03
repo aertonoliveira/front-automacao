@@ -4,4 +4,26 @@ const api = axios.create({
   baseURL: 'https://jin-dev.herokuapp.com/api',
 });
 
+// Add a 401 response interceptor
+api.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    if (401 === error.response.status) {
+      alert(
+        'Seu tempo de acesso expirou, estamos te redirecionando para a pagina de login'
+      );
+
+      // Apaga todo o localstorage
+      localStorage.clear();
+
+      // redireciona o usuário para a tela inicial
+      window.location.href = '/';
+    } else {
+      return Promise.reject(error);
+    }
+  }
+);
+
 export default api;
