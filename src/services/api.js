@@ -11,7 +11,7 @@ api.interceptors.response.use(
   },
   function (error) {
     if (401 === error.response.status) {
-      alert(
+      window.alert(
         'Seu tempo de acesso expirou, estamos te redirecionando para a pagina de login'
       );
 
