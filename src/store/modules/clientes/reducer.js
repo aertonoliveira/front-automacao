@@ -3,7 +3,8 @@ import * as Types from './types';
 const INITIAL_STATE = {
   data: null,
   loading: false,
-  listagemClientes:null,
+  listagemClientes: null,
+  alterarStatus: null,
 };
 
 export default function cliente(store = INITIAL_STATE, action) {
@@ -38,7 +39,23 @@ export default function cliente(store = INITIAL_STATE, action) {
       };
 
     case Types.LISTAGEM_CLIENTES_FAILURE:
-      return { ...store, loading: false };  
+      return { ...store, loading: false };
+
+    case Types.ALTERAR_STATUS_CLIENTE:
+      return {
+        ...store,
+        loading: true,
+      };
+
+    case Types.ALTERAR_STATUS_CLIENTE_SUCCESS:
+      return {
+        ...store,
+        loading: false,
+        alterarStatus: action.payload,
+      };
+
+    case Types.ALTERAR_STATUS_CLIENTE_FAILURE:
+      return { ...store, loading: false };
 
     default:
       return store;

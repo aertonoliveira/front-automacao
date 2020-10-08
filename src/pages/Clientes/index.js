@@ -1,14 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import useYupValidationResolver from '../../hooks/useYupValidationResolver';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Card, CardTitle, CardBody, Form } from 'reactstrap';
+import { Row, Col, Card, CardTitle, CardBody, Form, Button } from 'reactstrap';
 import Dropdown from '../../components/custom/dropdown';
 
-import { listagemClienteRequest } from '../../store/modules/clientes/actions';
+import {
+  listagemClienteRequest,
+  alterarStatusClienteRequest,
+} from '../../store/modules/clientes/actions';
 import Pagination from 'react-js-pagination';
 
 const Clientes = () => {
@@ -41,6 +44,13 @@ const Clientes = () => {
 
   const realizarPaginacao = (numeroPagina) => {
     dispatch(listagemClienteRequest(numeroPagina));
+  };
+
+  const ativarDesativarCliente = (id) => {
+    const response = window.confirm('Você desaja alterar o status?');
+    if (response) {
+      dispatch(alterarStatusClienteRequest(id));
+    }
   };
 
   return (
@@ -123,7 +133,32 @@ const Clientes = () => {
                                 <td>{cliente.cpf}</td>
                                 <td>{cliente.email}</td>
                                 <td>{cliente.celular}</td>
-                                <td>{cliente.ativo}</td>
+                                <td>
+                                  {!!cliente.ativo ? (
+                                    <Button
+                                      color="success"
+                                      size="sm"
+                                      id="ativarCliente"
+                                      onClick={() =>
+                                        ativarDesativarCliente(cliente.id)
+                                      }
+                                    >
+                                      Ativado
+                                    </Button>
+                                  ) : (
+                                    <Button
+                                      type="button"
+                                      color="danger"
+                                      size="sm"
+                                      id="desativarCliente"
+                                      onClick={() =>
+                                        ativarDesativarCliente(cliente.id)
+                                      }
+                                    >
+                                      Desativado
+                                    </Button>
+                                  )}
+                                </td>
                                 <td>{cliente.parent.name}</td>
                                 <td>{cliente.saldo_conta.valor}</td>
                                 <td>

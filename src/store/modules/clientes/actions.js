@@ -30,3 +30,17 @@ export const listagemClienteFailure = (data) => ({
   payload: data,
 });
 
+export const alterarStatusClienteRequest = (data) => ({
+  type: Types.ALTERAR_STATUS_CLIENTE,
+  payload: data,
+});
+
+export const alterarStatusClienteSuccess = (data) => ({
+  type: Types.ALTERAR_STATUS_CLIENTE_SUCCESS,
+  payload: data,
+});
+
+export const alterarStatusClienteFailure = (data) => ({
+  type: Types.ALTERAR_STATUS_CLIENTE_FAILURE,
+  payload: data,
+});

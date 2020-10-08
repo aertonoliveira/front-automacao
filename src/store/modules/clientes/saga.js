@@ -6,6 +6,7 @@ import * as Actions from './actions';
 import * as Types from './types';
 
 import { toast } from 'react-toastify';
+import _ from 'lodash';
 
 function* cadastroCliente(action) {
   try {
@@ -16,7 +17,7 @@ function* cadastroCliente(action) {
     toast.success('Cliente cadastrado com sucesso!');
     yield put(Actions.cadastroClienteSuccess(response.data));
   } catch (error) {
-    toast.success('Ocorreu um erro ao tentar cadastrar o cliente!');
+    toast.error('Ocorreu um erro ao tentar cadastrar o cliente!');
     yield put(Actions.cadastroClienteFailure());
   }
 }
@@ -36,7 +37,28 @@ function* listagemCliente(action) {
   }
 }
 
+function* alterarStatusCliente(action) {
+  try {
+    const user_id = action.payload;
+
+    const response = yield call(api.post, '/ativa_cliente', {
+      user_id,
+    });
+
+    yield put(Actions.alterarStatusClienteSuccess(response.data));
+
+    if (_.has(response.data, 'success')) {
+      toast.success(response.data.success);
+      yield call(Actions.listagemClienteRequest);
+    }
+  } catch (error) {
+    yield put(Actions.alterarStatusClienteFailure(error));
+    toast.error('Ocorreu um erro ao tentar alterar o status do cliente!');
+  }
+}
+
 export default all([
   takeLatest(Types.CADASTRO_CLIENTE, cadastroCliente),
   takeLatest(Types.LISTAGEM_CLIENTES, listagemCliente),
+  takeLatest(Types.ALTERAR_STATUS_CLIENTE, alterarStatusCliente),
 ]);
