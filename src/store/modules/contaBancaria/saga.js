@@ -9,7 +9,7 @@ function* cadastroContaBancaria(action) {
   try {
     const data = action.payload;
 
-    const response = yield call(api.post, '/cliente', data);
+    const response = yield call(api.post, '/cliente/contabancaria', data);
 
     yield put(Actions.contaBancariaSuccess(response.data));
   } catch (error) {

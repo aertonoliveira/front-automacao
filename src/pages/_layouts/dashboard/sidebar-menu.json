@@ -28,5 +28,15 @@
     "class_name": "",
     "is_icon_class": true,
     "icon": "ri-briefcase-4-line"
+  },
+  {
+    "title": "Conta Bancaria",
+    "name": "Conta Bancaria",
+    "is_heading": false,
+    "is_active": false,
+    "link": "/conta-bancaria",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-briefcase-4-line"
   }
 ]

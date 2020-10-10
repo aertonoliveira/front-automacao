@@ -21,7 +21,10 @@ const ContaBancaria = () => {
   let validationSchema = useMemo(
     () =>
       yup.object({
-        type: yup.string().required('Por favor, informe seu nome'),
+        agencia: yup.string().required('Por favor, informe sua agência'),
+        numero_conta: yup.string().required('Por favor, informe sua conta'),
+        tipo_conta: yup.string().required('Por favor, informe o tipo da conta'),
+        banco_id: yup.string().required('Por favor, informe o banco'),
       }),
     []
   );
@@ -31,9 +34,15 @@ const ContaBancaria = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.contaBancaria.loading);
   const bancos = useSelector((state) => state.contaBancaria.bancos);
+  const user_id = useSelector((state) => state.user.profile.id);
 
   const contaBancaria = (data) => {
-    dispatch(contaBancariaRequest(data));
+    const dados = {
+      ...data,
+      user_id: user_id
+    }
+    console.log(dados)
+    dispatch(contaBancariaRequest(dados));
   };
 
   useEffect(() => {
@@ -121,11 +130,11 @@ const ContaBancaria = () => {
                       name="banco_id"
                       ref={register}
                     >
-
+                           <option value="" >Selecione o banco</option>
                       {
                           bancos && bancos.data.map((banco, index) => (
 
-                          <option defaultValue="banco.id">{banco.nome_banco} {banco.numero_banco}</option>
+                          <option value={banco.id}>{banco.nome_banco} {banco.numero_banco}</option>
 
                           ))
                         }
