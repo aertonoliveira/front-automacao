@@ -40,6 +40,22 @@ export default function produto(store = INITIAL_STATE, action) {
     case Types.LISTAGEM_PRODUTOS_FAILURE:
       return { ...store, loading: false };
 
+    case Types.ALTERAR_STATUS_PRODUTO:
+      return {
+        ...store,
+        loading: true,
+      };
+
+    case Types.ALTERAR_STATUS_PRODUTO_SUCCESS:
+      return {
+        ...store,
+        loading: false,
+        listagemProdutos: action.payload,
+      };
+
+    case Types.ALTERAR_STATUS_PRODUTO_FAILURE:
+      return { ...store, loading: false };
+
     default:
       return store;
   }

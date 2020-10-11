@@ -88,9 +88,7 @@ const Clientes = () => {
                         ref={register}
                       >
                         <option value="Analista Senior">Analista Senior</option>
-                        <option value="Gestor de analista">
-                          Gestor de analista
-                        </option>
+                        <option value="Gestor de analista">Gestor de analista</option>
                         <option value="Analista pleno">Analista pleno</option>
                         <option value="Cliente">Cliente</option>
                         <option value="Parceiro">Parceiro</option>
@@ -159,8 +157,8 @@ const Clientes = () => {
                                     </Button>
                                   )}
                                 </td>
-                                <td>{cliente.parent.name}</td>
-                                <td>{cliente.saldo_conta.valor}</td>
+                                <td>{cliente.roles[0].name}</td>
+                                <td>{cliente.saldo_conta[0].valor}</td>
                                 <td>
                                   <Dropdown clienteId={cliente.id} />
                                 </td>
