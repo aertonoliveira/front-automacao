@@ -57,8 +57,24 @@ function* alterarStatusCliente(action) {
   }
 }
 
+function* listarProdutosCliente(action) {
+  try {
+    const data = action.payload;
+
+    const response = yield call(
+      api.get,
+      '/cliente/buscarid/' + data.clienteId
+    );
+    // console.log(response);
+    yield put(Actions.listaProdutosSucesso(response.data));
+  } catch (error) {
+    // yield put(Actions.listaProdutosRequest(error));
+  }
+}
+
 export default all([
   takeLatest(Types.CADASTRO_CLIENTE, cadastroCliente),
   takeLatest(Types.LISTAGEM_CLIENTES, listagemCliente),
   takeLatest(Types.ALTERAR_STATUS_CLIENTE, alterarStatusCliente),
+  takeLatest(Types.LISTAGEM_PRODUTOS_CLIENTES, listarProdutosCliente),
 ]);

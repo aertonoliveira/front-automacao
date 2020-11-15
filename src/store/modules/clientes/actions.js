@@ -44,3 +44,13 @@ export const alterarStatusClienteFailure = (data) => ({
   type: Types.ALTERAR_STATUS_CLIENTE_FAILURE,
   payload: data,
 });
+
+export const listaProdutosRequest = (data) => ({
+  type: Types.LISTAGEM_PRODUTOS_CLIENTES,
+  payload: data,
+});
+
+export const listaProdutosSucesso = (data) => ({
+  type: Types.LISTAGEM_PRODUTOS_CLIENTES_SUCESSO,
+  payload: data,
+});

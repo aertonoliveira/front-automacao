@@ -13,6 +13,7 @@ import CadastroClientes from '../pages/Clientes/cadastro';
 import Produtos from '../pages/Produtos';
 import ProdutosVisualizar from '../pages/Produtos/ProdutosVisualizar';
 import ContaBancaria from '../pages/ContaBancaria/index';
+import Extrato from '../pages/Extrato';
 
 export default function Router() {
   return (
@@ -34,6 +35,7 @@ export default function Router() {
         isPrivate
       />
       <Route path="/conta-bancaria" component={ContaBancaria} isPrivate />
+      <Route path="/extrato" component={Extrato} isPrivate />
 
     </Switch>
   );

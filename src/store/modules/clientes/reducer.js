@@ -46,7 +46,17 @@ export default function cliente(store = INITIAL_STATE, action) {
         ...store,
         loading: true,
       };
-
+    case Types.LISTAGEM_PRODUTOS_CLIENTES:
+      return {
+        ...store,
+        loading: false,
+      };
+    case Types.LISTAGEM_PRODUTOS_CLIENTES_SUCESSO:
+      return {
+        ...store,
+        loading: false,
+        listagemProdutosCliente: action.payload,
+      };
     case Types.ALTERAR_STATUS_CLIENTE_SUCCESS:
       return {
         ...store,

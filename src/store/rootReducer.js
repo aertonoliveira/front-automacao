@@ -5,6 +5,7 @@ import user from './modules/user/reducer';
 import cliente from './modules/clientes/reducer';
 import produto from './modules/produtos/reducer';
 import contaBancaria from './modules/contaBancaria/reducer';
+import extrato from './modules/extrato/reducer';
 
 export default combineReducers({
   auth,
@@ -12,4 +13,5 @@ export default combineReducers({
   cliente,
   produto,
   contaBancaria,
+  extrato
 });
