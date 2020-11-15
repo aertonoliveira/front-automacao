@@ -15,9 +15,7 @@ api.interceptors.response.use(
   },
   function (error) {
     if (401 === error.response.status) {
-      window.alert(
-        'Seu tempo de acesso expirou, estamos te redirecionando para a pagina de login'
-      );
+    
 
       // Apaga todo o localstorage
       localStorage.clear();

@@ -4,13 +4,13 @@ Variable
 
 
 :root {
-  --iq-bg-dark-bg: #6d73f6; 
-  --iq-bg-light-color: #efeefd;
-  --iq-bg-dark-color: #1d203f;
-  --iq-primary: #827af3;
-  --iq-primary-light: #b47af3;
-  --iq-primary-dark: #6B69D2;
-  --iq-secondary: #a09e9e;
+  --iq-bg-dark-bg: #F4F3F1; 
+  --iq-bg-light-color:#F4F3F1;
+  --iq-bg-dark-color:#F4F3F1;
+  --iq-primary:#757574;
+  --iq-primary-light:#B5B4B3;
+  --iq-primary-dark: #363535;
+  --iq-secondary:#DBDBD9;
   --iq-secondary-light: #c1c1c1;
   --iq-secondary-dark: #7d7d7d;
   --iq-success: #27b345;
