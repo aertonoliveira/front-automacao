@@ -36,7 +36,7 @@ const CadastrarProduto = ({ clienteId, open, setOpen }) => {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, errors } = useForm({ resolver });
   const loading = useSelector((state) => state.produto.loading);
-
+  console.log('aqui')    
   const handleCadastrarProduto = (data) => {
     data.user_id = clienteId;
     data.valor = removeCurrencyMask(data.valor);

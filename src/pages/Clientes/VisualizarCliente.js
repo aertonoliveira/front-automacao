@@ -20,32 +20,26 @@ const VisualizarCliente = ({ clienteId, open, setOpen, getProduto }) => {
 
   const dispatch = useDispatch();
   const produtos = useSelector((state) => state.cliente.listagemProdutosCliente);
-  console.log(produtos);
-  const listarProdutos = () => {
-    const data = {
-      type: '',
-      page: 1,
-      clienteId
-    };
-    dispatch(listaProdutosRequest(data));
-  };
-
-  let i =  0;
-  if (setOpen == true) {
-    i++;
-    console.log(i);
-      listarProdutos();
-  }
-
-  // useEffect(() => {
+  
+  // const listarProdutos = () => {
   //   const data = {
   //     type: '',
   //     page: 1,
   //     clienteId
   //   };
-
   //   dispatch(listaProdutosRequest(data));
-  // }, [dispatch]);
+  // };
+
+  // let i =  0;
+  // if (open) {
+  //   i++;
+  //   console.log(i);
+  //     listarProdutos();
+  // }
+
+  useEffect(() => {
+    console.log(produtos);
+  }, [produtos]);
 
   return (
     <Modal isOpen={open}>
