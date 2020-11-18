@@ -54,3 +54,8 @@ export const listaProdutosSucesso = (data) => ({
   type: Types.LISTAGEM_PRODUTOS_CLIENTES_SUCESSO,
   payload: data,
 });
+
+export const listaProdutosFailure = (data) => ({
+  type: Types.LISTAGEM_PRODUTOS_CLIENTES_FAILURE,
+  payload: data,
+});

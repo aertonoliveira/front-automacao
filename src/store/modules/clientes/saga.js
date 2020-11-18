@@ -65,10 +65,9 @@ function* listarProdutosCliente(action) {
       api.get,
       '/cliente/buscarid/' + data.clienteId
     );
-    // console.log(response);
     yield put(Actions.listaProdutosSucesso(response.data));
   } catch (error) {
-    // yield put(Actions.listaProdutosRequest(error));
+    yield put(Actions.listaProdutosFailure(error));
   }
 }
 
