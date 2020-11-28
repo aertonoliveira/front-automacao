@@ -1,0 +1,10 @@
+export const LIST_RELATORIO = '@relatorios/LIST_RELATORIO';
+export const LIST_RELATORIO_SUCCESS = '@relatorios/LIST_RELATORIO_SUCCESS';
+export const LIST_RELATORIO_FAILURE = '@relatorios/LIST_RELATORIO_FAILURE';
+
+export const PAGAR_RELATORIO = '@relatorios/PAGAR_RELATORIO';
+export const PAGAR_RELATORIO_SUCCESS = '@relatorios/PAGAR_RELATORIO_SUCCESS';
+export const PAGAR_RELATORIO_FAILURE = '@relatorios/PAGAR_RELATORIO_FAILURE';
+
+
+
