@@ -20,7 +20,7 @@ const VisualizarCliente = ({ open, setOpen }) => {
   const produtos = useSelector((state) => state.cliente.listagemProdutosCliente);
 
   return (
-    <Modal isOpen={open}>
+    <Modal isOpen={open} className="modal-lg modal-dialog-scrollable">
       <ModalHeader><strong>Produtos</strong></ModalHeader>
       {loading ? (
             <img

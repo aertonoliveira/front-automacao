@@ -13,6 +13,7 @@ import CadastroClientes from '../pages/Clientes/cadastro';
 import Produtos from '../pages/Produtos';
 import ProdutosVisualizar from '../pages/Produtos/ProdutosVisualizar';
 import ContaBancaria from '../pages/ContaBancaria/index';
+import RelatorioContratos from '../pages/Relatorio/RelatorioContratos';
 import Extrato from '../pages/Extrato';
 
 export default function Router() {
@@ -27,13 +28,10 @@ export default function Router() {
       <Route path="/clientes" component={Clientes} isPrivate />
       <Route path="/cadastro-clientes" component={CadastroClientes} isPrivate />
 
-      <Route exact path="/produtos" component={Produtos} isPrivate />
-      <Route
-        exact
-        path="/produtos/visualizar/:id"
-        component={ProdutosVisualizar}
-        isPrivate
-      />
+      <Route path="/produtos" component={Produtos} isPrivate />
+      <Route path="/produtos/visualizar/:id" component={ProdutosVisualizar} isPrivate />
+      <Route path="/relatorio/contratos" component={RelatorioContratos} isPrivate />
+
       <Route path="/conta-bancaria" component={ContaBancaria} isPrivate />
       <Route path="/extrato" component={Extrato} isPrivate />
 

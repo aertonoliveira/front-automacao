@@ -20,8 +20,21 @@ function* pagarRelatorioRequest(action) {
 function* listRelatorioRequest(action) {
   try {
     const data = action.payload;
+    let url = '';
+    if(data.data != '' && typeof(data.data) != 'undefined'){
+      url += '&data='+data.data;
+    }
+    if(data.cpf != ''  && typeof(data.cpf) != 'undefined'){
+      url += '&cpf='+data.cpf;
+    }
+    if(data.numero_contrato != '' && typeof(data.numero_contrato) != 'undefined'){
+      url += '&numero_contrato='+data.numero_contrato;
+    }
+    if(data.tipo_contrato != '' && typeof(data.tipo_contrato) != 'undefined'){
+      url += '&tipo_contrato='+data.tipo_contrato;
+    }
 
-    const response = yield call(api.get, '/bancos', data);
+    const response = yield call(api.get, '/relatorio/mensal?page='+ data.numeroPagina+url);
 
     yield put(Actions.listRelatorioSuccess(response.data));
   } catch (error) {

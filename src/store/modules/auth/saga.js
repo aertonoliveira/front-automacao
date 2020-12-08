@@ -21,7 +21,7 @@ function* login({ payload }) {
 
     yield call(history.push, '/dashboard');
   } catch (error) {
-    toast.success('Ocorreu um erro ao tentar realizar o login!');
+    toast.error('Ocorreu um erro ao tentar realizar o login!');
     yield put(Actions.loginFailure(error));
   }
 }

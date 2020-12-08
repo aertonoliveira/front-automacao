@@ -5,10 +5,11 @@ import cliente from './modules/clientes/saga';
 import produto from './modules/produtos/saga';
 import contaBancaria from './modules/contaBancaria/saga';
 import extrato from './modules/extrato/saga';
+import relatorio from './modules/relatorio/saga';
 
 
 
 
 export default function* rootSaga() {
-  return yield all([auth, user, cliente, produto, contaBancaria, extrato]);
+  return yield all([auth, user, cliente, produto, contaBancaria, extrato,relatorio]);
 }

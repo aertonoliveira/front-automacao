@@ -25,7 +25,6 @@ function* listagemProdutos(action) {
   try {
     
     const data = action.payload;
-    console.log(data)
     let url = '';
     if(data.data != '' && typeof(data.data) != 'undefined'){
       url += '&data='+data.data;
