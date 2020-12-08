@@ -1,3 +1,4 @@
+import { data } from 'jquery';
 import * as Types from './types';
 
 export const cadastroClienteRequest = (data) => ({
@@ -57,5 +58,32 @@ export const listaProdutosSucesso = (data) => ({
 
 export const listaProdutosFailure = (data) => ({
   type: Types.LISTAGEM_PRODUTOS_CLIENTES_FAILURE,
+  payload: data,
+});
+
+export const uploadeDocumentoRequest = (data) => ({
+  type: Types.UPLOAD_DOCUMENTO_CLIENTE,
+  payload: data,
+});
+
+export const updateProgressDocumento = () => ({
+  type: Types.PROGRESS_DOCUMENTO_CLIENTE
+});
+
+export const updateProgressDocumentoSucesso = () => ({
+  type: Types.PROGRESS_DOCUMENTO_CLIENTE_SUCESSO
+});
+
+export const updateProgressDocumentoFalha = () => ({
+  type: Types.PROGRESS_DOCUMENTO_CLIENTE_FALHA
+});
+
+export const documentosClienteRequest = (data) => ({
+  type: Types.RETORNA_DOCUMENTO_CLIENTE,
+  payload: data,
+});
+
+export const listagemDocumentosCliente = (data) => ({
+  type: Types.LISTAGEM_DOCUMENTO_CLIENTE,
   payload: data,
 });

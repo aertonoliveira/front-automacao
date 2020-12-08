@@ -14,7 +14,7 @@ function* listagemExtratos(action) {
     const data = action.payload;
     const response = yield call(
       api.get,
-      '/cliente/buscarid/' + data.userProfile.id + '?page=' + data.page
+      'relatorio/mensal/user'
     );
 
     yield put(Actions.listagemExtratoSuccess(response.data));

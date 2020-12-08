@@ -5,6 +5,8 @@ const INITIAL_STATE = {
   loading: false,
   listagemClientes: null,
   alterarStatus: null,
+  progress: false,
+  documentosCliente: false
 };
 
 export default function cliente(store = INITIAL_STATE, action) {
@@ -72,6 +74,35 @@ export default function cliente(store = INITIAL_STATE, action) {
     case Types.ALTERAR_STATUS_CLIENTE_FAILURE:
       return { ...store, loading: false };
 
+    case Types.UPLOAD_DOCUMENTO_CLIENTE:
+      return {
+        ...store,
+        loading: false,
+      };
+    case Types.PROGRESS_DOCUMENTO_CLIENTE:
+      return {
+        ...store,
+        progress: true
+      };
+    case Types.PROGRESS_DOCUMENTO_CLIENTE_SUCESSO:
+      return {
+        ...store,
+        progress: false
+      };
+    case Types.PROGRESS_DOCUMENTO_CLIENTE_FALHA:
+      return {
+        ...store,
+        progress: false
+      };
+    case Types.LISTAGEM_DOCUMENTO_CLIENTE:
+      return {
+        ...store,
+        documentosCliente: action.payload
+      };
+    case Types.RETORNA_DOCUMENTO_CLIENTE:
+      return {
+        ...store,
+      };
     default:
       return store;
   }

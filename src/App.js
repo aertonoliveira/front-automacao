@@ -6,6 +6,8 @@ import { Router } from 'react-router-dom';
 
 import './config/ReactotronConfig';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-circular-progressbar/dist/styles.css';
+
 import { store, persistor } from './store';
 import Routes from './routes';
 import history from './services/history';

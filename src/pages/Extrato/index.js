@@ -27,9 +27,9 @@ const Extratos = () => {
   const { handleSubmit, register } = useForm({ resolver });
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.cliente.loading);
-  const userProfile = useSelector((state) => state.user.profile);
-  const listagem = useSelector((state) => state.cliente.listagemExtratos);
-
+  // const userProfile = useSelector((state) => state.user.profile);
+  const listagem = useSelector((state) => state.extrato.listagemExtratos);
+console.log(listagem)
   const listagemExtratos = (data) => {
     dispatch(listagemExtratoRequest(data));
   };
@@ -39,7 +39,6 @@ const Extratos = () => {
     const data = {
       type: [],
       page: 1,
-      userProfile,
     };
 
     dispatch(listagemExtratoRequest(data));
@@ -84,7 +83,7 @@ const Extratos = () => {
               ) : (
                 <CardBody className="iq-card-body">
                   <Row className="mb-4">
-                    <Col sm="12" md="6" lg="4">
+                    {/* <Col sm="12" md="6" lg="4">
                       <select
                         className="form-control"
                         name="type"
@@ -97,9 +96,9 @@ const Extratos = () => {
                         <option value="Parceiro">Parceiro</option>
                         <option value="Trader">Trader</option>
                       </select>
-                    </Col>
+                    </Col> */}
 
-                    <Col sm="12" md="6" lg="4">
+                    {/* <Col sm="12" md="6" lg="4">
                       <button
                         type="submit"
                         color="primary"
@@ -107,38 +106,32 @@ const Extratos = () => {
                       >
                         {loading ? 'Carregando...' : 'Pesquisar'}
                       </button>
-                    </Col>
+                    </Col> */}
                   </Row>
                   <Row>
                     <Col sm="12">
                       <table className="table">
                         <thead>
                           <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Celular</th>
+                            <th scope="col">Número</th>
+                            <th scope="col">Total Rentabilizado</th>
+                            <th scope="col">Aporte</th>
+                            <th scope="col">Juros (%)</th>
+                            <th scope="col">Rentabilidade ($)</th>
+                            <th scope="col">Tipo Contrato</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Cargo</th>
-                            <th scope="col">Saldo</th>
-                            <th scope="col"></th>
+                            <th scope="col">Comprovante</th>
                           </tr>
                         </thead>
                         <tbody>
                           {listagem &&
-                            listagem.data.map((cliente, index) => (
+                            listagem.map((extrato, index) => (
                               <tr key={index}>
-                                <th scope="row">{cliente.id}</th>
-                                <td>{cliente.name}</td>
-                                <td>{cliente.cpf}</td>
-                                <td>{cliente.email}</td>
-                                <td>{cliente.celular}</td>
-                                <td>{cliente.roles[0].name}</td>
-                                <td>{cliente.saldo_conta[0].valor}</td>
-                                <td>
-                                  <Dropdown clienteId={cliente.id} />
-                                </td>
+                                {/* <th scope="row">{extrato}</th>
+                                <td>{extrato}</td>
+                                <td>{extrato}</td>
+                                <td>{extrato}</td>
+                                <td>{extrato}</td> */}
                               </tr>
                             ))}
                         </tbody>

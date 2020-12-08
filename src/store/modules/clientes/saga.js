@@ -71,9 +71,53 @@ function* listarProdutosCliente(action) {
   }
 }
 
+function* uploadDocumentoCliente(action) {
+  try {
+    yield put(Actions.updateProgressDocumento());
+
+    // const headers = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+    //     'Content-Type': 'multipart/form-data'
+    //   }
+    // };
+
+    const data = action.payload;
+
+    const response = yield call(
+      api.post,
+      'cliente/documentos',
+      data
+      );
+    toast.success('Documentos enviados com sucesso!');
+    yield put(Actions.updateProgressDocumentoSucesso());
+  } catch (error) {
+    toast.error('Ocorreu uma falha ao tentar cadastrar o documento!');
+    yield put(Actions.updateProgressDocumentoFalha());
+  }
+}
+
+function* listaDocumentoCliente(action) {
+  try {
+    const data = action.payload;
+    // console.log(data.clienteId);
+    const response = yield call(
+      api.get,
+      'cliente/documentos/' + data.clienteId
+    );
+
+    yield put(Actions.listagemDocumentosCliente(response.data));
+  } catch (error) {
+
+  }
+}
+
 export default all([
   takeLatest(Types.CADASTRO_CLIENTE, cadastroCliente),
   takeLatest(Types.LISTAGEM_CLIENTES, listagemCliente),
   takeLatest(Types.ALTERAR_STATUS_CLIENTE, alterarStatusCliente),
   takeLatest(Types.LISTAGEM_PRODUTOS_CLIENTES, listarProdutosCliente),
+  takeLatest(Types.UPLOAD_DOCUMENTO_CLIENTE, uploadDocumentoCliente),
+  takeLatest(Types.RETORNA_DOCUMENTO_CLIENTE, listaDocumentoCliente),
 ]);

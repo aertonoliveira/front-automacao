@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ButtonDropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import CadastrarProduto from '../../../pages/Produtos/CadastrarProduto';
 import VisualizarCliente from '../../../pages/Clientes/VisualizarCliente';
+import UploadDocumentos from '../../../pages/Clientes/UploadDocumentos';
+
 import {
   listaProdutosRequest,
+  documentosClienteRequest
 } from '../../../store/modules/clientes/actions';
 
 export default function Dropdown({ clienteId, cliente }) {
@@ -14,8 +17,12 @@ export default function Dropdown({ clienteId, cliente }) {
     false
   );
   const dispatch = useDispatch();
-
+  const documentoListagem = useSelector((state) => state.cliente.documentosCliente);
   const [modalOpenVisualizarCliente, setModalOpenVisualizarCliente] = useState(
+    false
+  );
+
+  const [modalOpenUploadDocumentos, setModalOpenUploadDocumentos] = useState(
     false
   );
 
@@ -31,18 +38,30 @@ export default function Dropdown({ clienteId, cliente }) {
     setModalOpenVisualizarCliente(!modalOpenVisualizarCliente);
   };
 
+  const toggleModalUploadDocumentos = () => {
+    setModalOpenUploadDocumentos(!modalOpenUploadDocumentos);
+  };
+
   useEffect(() => {
     const data = {
       type: '',
       page: 1,
       clienteId
     };
-  
+
     if(modalOpenVisualizarCliente){
       dispatch(listaProdutosRequest(data));
     }
-    console.log('RETORNO: ', modalOpenVisualizarCliente);
   }, [modalOpenVisualizarCliente]);
+
+console.log(documentoListagem);
+if (dropdownOpen) {
+  console.log(clienteId);
+    const data = {
+      clienteId
+    }
+    dispatch(documentosClienteRequest(data));
+  }
 
   return (
     <>
@@ -58,6 +77,17 @@ export default function Dropdown({ clienteId, cliente }) {
           >
             Adicionar
           </button>
+          { documentoListagem ? (
+            ""
+          ) : (
+            <button
+              type="button"
+              className="dropdown-item"
+              onClick={toggleModalUploadDocumentos}
+            >
+              Documentos
+            </button>
+          )}
           <button
             type="button"
             className="dropdown-item"
@@ -78,6 +108,12 @@ export default function Dropdown({ clienteId, cliente }) {
         clienteId={clienteId}
         open={modalOpenVisualizarCliente}
         setOpen={setModalOpenVisualizarCliente}
+      />
+
+      <UploadDocumentos
+        clienteId={clienteId}
+        open={modalOpenUploadDocumentos}
+        setOpen={setModalOpenUploadDocumentos}
       />
     </>
   );
