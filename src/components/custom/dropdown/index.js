@@ -51,17 +51,18 @@ export default function Dropdown({ clienteId, cliente }) {
 
     if(modalOpenVisualizarCliente){
       dispatch(listaProdutosRequest(data));
+      dispatch(documentosClienteRequest(data));
     }
   }, [modalOpenVisualizarCliente]);
 
-console.log(documentoListagem);
-if (dropdownOpen) {
-  console.log(clienteId);
-    const data = {
-      clienteId
-    }
-    dispatch(documentosClienteRequest(data));
-  }
+// console.log(documentoListagem);
+// if (dropdownOpen) {
+//   console.log(clienteId);
+//     const data = {
+//       clienteId
+//     }
+//     dispatch(documentosClienteRequest(data));
+//   }
 
   return (
     <>
@@ -77,17 +78,13 @@ if (dropdownOpen) {
           >
             Adicionar
           </button>
-          { documentoListagem ? (
-            ""
-          ) : (
-            <button
-              type="button"
-              className="dropdown-item"
-              onClick={toggleModalUploadDocumentos}
-            >
-              Documentos
-            </button>
-          )}
+          <button
+            type="button"
+            className="dropdown-item"
+            onClick={toggleModalUploadDocumentos}
+          >
+            Documentos
+          </button>
           <button
             type="button"
             className="dropdown-item"

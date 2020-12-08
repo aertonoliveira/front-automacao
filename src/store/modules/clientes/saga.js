@@ -106,7 +106,6 @@ function* listaDocumentoCliente(action) {
       api.get,
       'cliente/documentos/' + data.clienteId
     );
-
     yield put(Actions.listagemDocumentosCliente(response.data));
   } catch (error) {
 
