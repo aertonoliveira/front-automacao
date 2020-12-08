@@ -5,19 +5,15 @@ import Dropzone from 'react-dropzone';
 import { toast } from 'react-toastify';
 import { uniqueId } from 'lodash';
 import filesize from 'filesize';
-import * as yup from 'yup';
 
 import FileList from '../../components/FileList';
 
 import {
-  Row,
-  Col,
   Button,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  CardBody,
 } from 'reactstrap';
 
 import { ContainerModal, DropContainer, UploadMessage } from './styles';
@@ -31,11 +27,9 @@ const UploadDocumentos = ({ open, setOpen, clienteId }) => {
   const [UploadRgVerso, setUploadRgVerso] = useState(false);
   const [UploadComprResidencia, setUploadComprResidencia] = useState(false);
   const [UploadCompPagamento, setUploadCompPagamento] = useState(false);
-  const [UploadAll, setUploadAll] = useState(false);
 
   const dispatch = useDispatch();
   const progress = useSelector((state) => state.cliente.progress);
-  const produtos = useSelector((state) => state.cliente.listagemProdutosCliente);
 
   useEffect(() => {
     if (!progress) {

@@ -101,14 +101,13 @@ function* uploadDocumentoCliente(action) {
 function* listaDocumentoCliente(action) {
   try {
     const data = action.payload;
-    // console.log(data.clienteId);
     const response = yield call(
       api.get,
       'cliente/documentos/' + data.clienteId
     );
     yield put(Actions.listagemDocumentosCliente(response.data));
   } catch (error) {
-
+    toast.error('Ocorreu uma falha ao tentar verificar os documentos do cliente.');
   }
 }
 
