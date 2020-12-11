@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   data: null,
   loading: false,
   listRelatorios:null,
+  listagemRelatoriosPlenoSenior: null,
 };
 
 export default function relatorio(store = INITIAL_STATE, action) {
@@ -39,6 +40,23 @@ export default function relatorio(store = INITIAL_STATE, action) {
       case Types.PAGAR_RELATORIO_FAILURE:
         return { ...store };
 
+      case Types.LIST_RELATORIO_PLENO_SENIOR:
+        return {
+          ...store,
+          loading: true,
+        };
+
+      case Types.LIST_RELATORIO_PLENO_SENIOR_SUCCESS:
+        return {
+          ...store,
+          loading: false,
+          listagemRelatoriosPlenoSenior: action.payload,
+        }
+      case Types.LIST_RELATORIO_PLENO_SENIOR_FAILURE:
+        return {
+          ...store,
+          loading: false,
+         };
       default:
       return store;
 

@@ -98,7 +98,7 @@
       {
         "title": "Contratos",
         "is_active": false,
-        "link": "/relatorio/contrato",
+        "link": "/relatorio/contratos",
         "class_name": "",
         "is_icon_class": true,
         "icon": "ri-edit-line"
@@ -121,5 +121,5 @@
       }
     ]
   }
-  
+
 ]

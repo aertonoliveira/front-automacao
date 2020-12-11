@@ -7,7 +7,6 @@ const INITIAL_STATE = {
   alterarStatus: null,
 };
 
-console.log(INITIAL_STATE);
 export default function cliente(store = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.LISTAGEM_EXTRATOS:

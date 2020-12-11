@@ -29,7 +29,7 @@ const Clientes = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.cliente.loading);
   const listagem = useSelector((state) => state.cliente.listagemClientes);
-console.log(listagem)
+
   const listagemClientes = (data) => {
     dispatch(listagemClienteRequest(data));
   };

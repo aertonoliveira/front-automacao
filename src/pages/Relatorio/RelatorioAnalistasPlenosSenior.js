@@ -6,20 +6,20 @@ import * as yup from 'yup';
 import { InputMask } from '../../components/custom/Inputs';
 import useYupValidationResolver from '../../hooks/useYupValidationResolver';
 import { useDispatch, useSelector } from 'react-redux';
+import { formatPrice } from '../../utils/FormatPrice';
 import { Row, Col, Card, CardTitle, CardBody, Form, Button } from 'reactstrap';
 import Dropdown from '../../components/custom/dropdown';
 
 import {
-  listRelatorioRequest,
+  listRelatorioRequestPlSe,
 } from '../../store/modules/relatorio/actions';
 import Pagination from 'react-js-pagination';
 
 const RelatorioContratos = () => {
   // Validação
-  let validationSchema = useMemo(
-    () =>
+  let validationSchema = useMemo( () =>
       yup.object({
-        type: yup.string().required('Por favor, informe seu nome'),
+
       }),
     []
   );
@@ -27,36 +27,31 @@ const RelatorioContratos = () => {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register } = useForm({ resolver });
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.cliente.loading);
+  const loading = useSelector((state) => state.relatorio.loading);
   const userProfile = useSelector((state) => state.user.profile);
-  const listagem = useSelector((state) => state.cliente.listagemRelatorios);
+  const listagem = useSelector((state) => state.relatorio.listagemRelatoriosPlenoSenior);
 
-  const listagemRelatorios = (data) => {
-
-    const dados ={
+  const listagemRelatoriosPlSe = (data) => {
+    const dados = {
       ...data,
       numeroPagina: 1
     }
 
-    dispatch(listRelatorioRequest(dados));
+    dispatch(listRelatorioRequestPlSe(dados));
   };
 
   useEffect(() => {
-
     const dados ={
       numeroPagina: 1
     }
-    dispatch(listRelatorioRequest(dados));
+    dispatch(listRelatorioRequestPlSe(dados));
   }, [dispatch]);
 
   const realizarPaginacao = (numeroPagina) => {
-
       const dados ={
-
         numeroPagina
       }
-
-    dispatch(listRelatorioRequest(dados));
+    dispatch(listRelatorioRequestPlSe(dados));
   };
 
   return (
@@ -66,7 +61,7 @@ const RelatorioContratos = () => {
           <Card className="iq-card">
             <div className="iq-card-header d-flex justify-content-between">
               <CardTitle className="card-title">
-                <h4>Extrato do cliente</h4>
+                <h4>Relatório Analista Pleno e Senior</h4>
               </CardTitle>
 
               <Link
@@ -76,7 +71,7 @@ const RelatorioContratos = () => {
                 Cadastrar
               </Link>
             </div>
-            <Form onSubmit={handleSubmit(listagemRelatorios)}>
+            <Form onSubmit={handleSubmit(listagemRelatoriosPlSe)}>
               {loading ? (
                 <img
                   width="100"
@@ -88,10 +83,10 @@ const RelatorioContratos = () => {
                 <CardBody className="iq-card-body">
                  <Row className="mb-4">
                       <Col sm="12" md="6" lg="2">
-                        <InputMask type="text" name="cpf"  mask="999.999.999-99" ref={register} className="form-control" />
+                        <InputMask type="text" name="cpf" placeholder="___.___.___-__" mask="999.999.999-99" ref={register} className="form-control" />
                       </Col>
                       <Col sm="12" md="6" lg="2">
-                        <input type="text" name="numero_contrato" ref={register} className="form-control" />
+                        <input type="text" name="numero_contrato" placeholder="Número Contrato" ref={register} className="form-control" />
                       </Col>
                       <Col sm="12" md="6" lg="2">
                         <select
@@ -144,30 +139,37 @@ const RelatorioContratos = () => {
                           <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">cpf</th>
-                            <th scope="col">status</th>
-                            <th scope="col">Mês</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Mês Referência</th>
                             <th scope="col">Dias Calculados</th>
                             <th scope="col">Porcentagem Calculada</th>
                             <th scope="col">Valor a Pagar</th>
                             <th scope="col">Nº Contrato</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col"></th>
+                            <th scope="col">Contrato</th>
+                            <th scope="col">Ação</th>
                           </tr>
                         </thead>
                         <tbody>
                           {listagem &&
-                            listagem.data.map((cliente, index) => (
+                            listagem.data.map((RelPlenoSenior, index) => (
                               <tr key={index}>
-                                <th scope="row">{cliente.id}</th>
-                                <td>{cliente.name}</td>
-                                <td>{cliente.cpf}</td>
-                                <td>{cliente.email}</td>
-                                <td>{cliente.celular}</td>
-                                <td>{cliente.roles[0].name}</td>
-                                <td>{cliente.saldo_conta[0].valor}</td>
-                                <td>{cliente.saldo_conta[0].valor}</td>
+                                <td>{RelPlenoSenior.user.name}</td>
+                                <td>{RelPlenoSenior.user.cpf}</td>
+
+                                {!!RelPlenoSenior.status ? (
+                                <td>Ativo</td>
+                                ) : (
+                                  <td>Desativado</td>
+                                )}
+
+                                <td>{RelPlenoSenior.data_referencia}</td>
+                                <td>{RelPlenoSenior.dias_calculados}</td>
+                                <td>{RelPlenoSenior.porcentagem_calculada} %</td>
+                                <td>{formatPrice(RelPlenoSenior.valor_contrato)}</td>
+                                <td>{RelPlenoSenior.contrato.numero_contrato}</td>
+                                <td>{RelPlenoSenior.contrato.tipo_contrato}</td>
                                 <td>
-                                  <Dropdown clienteId={cliente.id} />
+                                  {/* <Dropdown clienteId={cliente.id} /> */}
                                 </td>
                               </tr>
                             ))}
