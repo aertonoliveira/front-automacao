@@ -7,9 +7,14 @@ import { InputMask } from '../../components/custom/Inputs';
 import useYupValidationResolver from '../../hooks/useYupValidationResolver';
 import { useDispatch, useSelector } from 'react-redux';
 import { formatPrice } from '../../utils/FormatPrice';
+import { MascaraCPF } from '../../utils/Functions';
+import Moment from 'moment';
 import { Row, Col, Card, CardTitle, CardBody, Form, Button } from 'reactstrap';
 import Dropdown from '../../components/custom/dropdown';
+import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
+import br from 'date-fns/locale/pt-BR'
 
+import "react-datepicker/dist/react-datepicker.css";
 import {
   listRelatorioRequestPlSe,
 } from '../../store/modules/relatorio/actions';
@@ -28,8 +33,11 @@ const RelatorioContratos = () => {
   const { handleSubmit, register } = useForm({ resolver });
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.relatorio.loading);
-  const userProfile = useSelector((state) => state.user.profile);
   const listagem = useSelector((state) => state.relatorio.listagemRelatoriosPlenoSenior);
+  const [startDate, setStartDate] = useState(new Date());
+
+  registerLocale('br', br);
+  setDefaultLocale('br');
 
   const listagemRelatoriosPlSe = (data) => {
     const dados = {
@@ -63,13 +71,6 @@ const RelatorioContratos = () => {
               <CardTitle className="card-title">
                 <h4>Relatório Analista Pleno e Senior</h4>
               </CardTitle>
-
-              <Link
-                className="btn btn-primary float-right"
-                to="/cadastro-clientes"
-              >
-                Cadastrar
-              </Link>
             </div>
             <Form onSubmit={handleSubmit(listagemRelatoriosPlSe)}>
               {loading ? (
@@ -89,25 +90,18 @@ const RelatorioContratos = () => {
                         <input type="text" name="numero_contrato" placeholder="Número Contrato" ref={register} className="form-control" />
                       </Col>
                       <Col sm="12" md="6" lg="2">
-                        <select
-                          className="form-control"
+                        <DatePicker className="form-control"
+                          locale="br"
+                          selected={startDate}
+                          onChange={date => setStartDate(date)}
+                          dateFormat="MM/yyyy"
+                          showMonthYearPicker
+                          showFullMonthYearPicker
+                          showFourColumnMonthYearPicker
                           name="data"
                           ref={register}
-                        >
-                          <option value=''>Selecione o Mês</option>
-                          <option value="01" >Janeiro</option>
-                          <option value="02" >Fevereiro</option>
-                          <option value="03" >Março</option>
-                          <option value="04" >Abril</option>
-                          <option value="05" >Maio</option>
-                          <option value="06" >Junho</option>
-                          <option value="07" >Julho</option>
-                          <option value="08" >Agosto</option>
-                          <option value="09" >Setembro</option>
-                          <option value="10" >Outubro</option>
-                          <option value="11" >Novembro</option>
-                          <option value="12" >Dezembro</option>
-                        </select>
+                        />
+                        <input type="hidden" name="data" value={startDate} ref={register}/>
                       </Col>
                       <Col sm="12" md="6" lg="2">
                         <select
@@ -154,7 +148,7 @@ const RelatorioContratos = () => {
                             listagem.data.map((RelPlenoSenior, index) => (
                               <tr key={index}>
                                 <td>{RelPlenoSenior.user.name}</td>
-                                <td>{RelPlenoSenior.user.cpf}</td>
+                                <td>{MascaraCPF(RelPlenoSenior.user.cpf)}</td>
 
                                 {!!RelPlenoSenior.status ? (
                                 <td>Ativo</td>
@@ -162,14 +156,14 @@ const RelatorioContratos = () => {
                                   <td>Desativado</td>
                                 )}
 
-                                <td>{RelPlenoSenior.data_referencia}</td>
+                                <td>{Moment(RelPlenoSenior.data_referencia).format('DD/MM/YYYY')}</td>
                                 <td>{RelPlenoSenior.dias_calculados}</td>
                                 <td>{RelPlenoSenior.porcentagem_calculada} %</td>
                                 <td>{formatPrice(RelPlenoSenior.valor_contrato)}</td>
                                 <td>{RelPlenoSenior.contrato.numero_contrato}</td>
                                 <td>{RelPlenoSenior.contrato.tipo_contrato}</td>
                                 <td>
-                                  {/* <Dropdown clienteId={cliente.id} /> */}
+                                  {/* <Dropdown clienteId={RelPlenoSenior.id} /> */}
                                 </td>
                               </tr>
                             ))}

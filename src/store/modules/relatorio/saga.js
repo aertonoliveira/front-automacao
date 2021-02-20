@@ -22,25 +22,24 @@ function* listRelatorioRequestPleSen(action) {
   try {
     const data = action.payload;
     let url = '';
-    console.log(data);
-    if (data.data != '' && typeof(data.data) != 'undefined') {
+    if (data.data !== '' && typeof(data.data) != 'undefined') {
       url += '&data=' + data.data;
     }
-    if (data.numero_contrato != '' && typeof(data.numero_contrato) != 'undefined') {
-      url += '&numero_contrato =' + data.numero_contrato;
+    console.log(data)
+    if (data.numero_contrato !== '' && typeof(data.numero_contrato) != 'undefined') {
+      url += '&numero_contrato=' + data.numero_contrato;
     }
-    if (data.tipo_contrato != '' && typeof(data.tipo_contrato) != 'undefined') {
+    if (data.tipo_contrato !== '' && typeof(data.tipo_contrato) != 'undefined') {
       url += '&tipo_contrato=' + data.tipo_contrato;
     }
     if (data.cpf != '' && typeof(data.cpf) != 'undefined') {
       url += '&cpf=' + removeCurrencyMask(data.cpf);
     }
-    console.log(url)
+
     const response = yield call(api.get, '/relatorio/mensal?page=' + data.numeroPagina+url);
     yield put(Actions.listRelatorioRequestPlSeSuccess(response.data));
 
   } catch (error) {
-    console.log(error);
     yield put(Actions.listRelatorioRequestPlSeFailure());
   }
 }
