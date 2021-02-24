@@ -5,6 +5,7 @@ import api from '../../../services/api';
 import * as Actions from './actions';
 import * as Types from './types';
 import { removeCurrencyMask } from '../../../utils/Functions';
+import moment from 'moment';
 
 function* pagarRelatorioRequest(action) {
   try {
@@ -23,9 +24,9 @@ function* listRelatorioRequestPleSen(action) {
     const data = action.payload;
     let url = '';
     if (data.data !== '' && typeof(data.data) != 'undefined') {
-      url += '&data=' + data.data;
+      url += '&data=' + moment(new Date(data.data)).format('MM');
     }
-    console.log(data)
+
     if (data.numero_contrato !== '' && typeof(data.numero_contrato) != 'undefined') {
       url += '&numero_contrato=' + data.numero_contrato;
     }

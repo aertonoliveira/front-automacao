@@ -44,7 +44,7 @@ const RelatorioContratos = () => {
       ...data,
       numeroPagina: 1
     }
-
+    setStartDate('');
     dispatch(listRelatorioRequestPlSe(dados));
   };
 
@@ -93,11 +93,10 @@ const RelatorioContratos = () => {
                         <DatePicker className="form-control"
                           locale="br"
                           selected={startDate}
-                          onChange={date => setStartDate(date)}
+                          onChange={setStartDate}
                           dateFormat="MM/yyyy"
                           showMonthYearPicker
                           showFullMonthYearPicker
-                          showFourColumnMonthYearPicker
                           name="data"
                           ref={register}
                         />
