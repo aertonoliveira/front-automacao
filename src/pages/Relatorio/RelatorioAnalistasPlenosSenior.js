@@ -10,7 +10,7 @@ import { formatPrice } from '../../utils/FormatPrice';
 import { MascaraCPF } from '../../utils/Functions';
 import Moment from 'moment';
 import { Row, Col, Card, CardTitle, CardBody, Form, Button } from 'reactstrap';
-import Dropdown from '../../components/custom/dropdown';
+import DropdownRel from '../../components/custom/dropdown-relatorios';
 import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import br from 'date-fns/locale/pt-BR'
 
@@ -99,6 +99,7 @@ const RelatorioContratos = () => {
                           showFullMonthYearPicker
                           name="data"
                           ref={register}
+                          placeholderText="Mês/Ano"
                         />
                         <input type="hidden" name="data" value={startDate} ref={register}/>
                       </Col>
@@ -162,7 +163,7 @@ const RelatorioContratos = () => {
                                 <td>{RelPlenoSenior.contrato.numero_contrato}</td>
                                 <td>{RelPlenoSenior.contrato.tipo_contrato}</td>
                                 <td>
-                                  {/* <Dropdown clienteId={RelPlenoSenior.id} /> */}
+                                  <DropdownRel clienteId={RelPlenoSenior.id} />
                                 </td>
                               </tr>
                             ))}
