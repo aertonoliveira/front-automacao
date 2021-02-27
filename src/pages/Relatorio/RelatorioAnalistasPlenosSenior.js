@@ -97,6 +97,7 @@ const RelatorioContratos = () => {
                           dateFormat="MM/yyyy"
                           showMonthYearPicker
                           showFullMonthYearPicker
+                          showFourColumnMonthYearPicker
                           name="data"
                           ref={register}
                           placeholderText="Mês/Ano"
