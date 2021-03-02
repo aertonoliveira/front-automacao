@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
+import Dropzone from 'react-dropzone';
+
 import {
   Row,
   Col,
@@ -10,6 +12,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 import { HeaderBaixa } from './styled';
+import FileList from '../../components/FileList';
 
 const VisualizarCliente = ({ clienteId, open, setOpen }) => {
   const { register } = useForm('');
@@ -50,7 +53,7 @@ const VisualizarCliente = ({ clienteId, open, setOpen }) => {
               <th scope="col">BHGSG@gmail.com</th>
             </tr>
             <tr>
-              <th scope="col">Status do Pagamento</th>
+              <th scope="col" colSpan="2">Status do Pagamento</th>
             </tr>
             <tr>
               <select
@@ -62,6 +65,12 @@ const VisualizarCliente = ({ clienteId, open, setOpen }) => {
                 <option value="Simples">Pago</option>
                 <option value="aguardando">Aguardando</option>
               </select>
+            </tr>
+            <tr>
+              <th scope="col">Comprovante de Pagamento:</th>
+              <th>
+                <input type="file" />
+              </th>
             </tr>
           </thead>
         
