@@ -41,6 +41,6 @@ export const listRelatorioRequestPlSeSuccess = (data) => ({
 });
 
 export const listRelatorioRequestPlSeFailure = (data) => ({
-  type: Types.LIST_RELATORIO_PLENO_SENIOR_SUCCESS,
+  type: Types.LIST_RELATORIO_PLENO_SENIOR_FAILURE,
   payload: data,
 });
