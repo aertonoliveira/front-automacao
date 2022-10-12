@@ -31,8 +31,6 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.loading);
 
-  
-
   const handleLogin = ({ email, password }) => {
     dispatch(loginRequest(email, password));
   };
@@ -65,7 +63,8 @@ const LoginPage = () => {
               <div className="help-block">{errors.password.message}</div>
             )}
           </div>
-          <div className="d-inline-block w-100">
+
+          <div className={'button-alignment'}>
             <button
               type="submit"
               className="btn btn-primary float-right"
@@ -73,7 +72,18 @@ const LoginPage = () => {
             >
               {isLoading ? 'Carregando...' : 'Entrar'}
             </button>
+
+            <span>Ou</span>
+
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={isLoading ? true : false}
+            >
+              {isLoading ? 'Carregando...' : 'Cadastrar'}
+            </button>
           </div>
+
           {/* <div className="sign-info">
             <span className="dark-color d-inline-block line-height-2">
               Não tem uma conta?

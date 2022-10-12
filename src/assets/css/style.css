@@ -1140,3 +1140,16 @@ input.increment { text-align: center; }
 .iq-additional_slider img { height: 100px; width: 150px; }
 .ais-Pagination-item--selected .ais-Pagination-link { background: rgba(130, 122, 243, 1); background: -moz-linear-gradient(left, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%); background: -webkit-gradient(left top, right top, color-stop(0%, rgba(130, 122, 243, 1)), color-stop(100%, rgba(180, 122, 243, 1))); background: -webkit-linear-gradient(left, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%); background: -o-linear-gradient(left, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%); background: -ms-linear-gradient(left, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%); background: linear-gradient(to right, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%) !important; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='var(--iq-success)', endColorstr='#b47af3', GradientType=1); border-color: var(--iq-primary) !important; color: var(--iq-white) !important; }
 .ais-Breadcrumb-link, .ais-HierarchicalMenu-link, .ais-Menu-link, .ais-Pagination-link, .ais-RatingMenu-link { color: var(--iq-primary) !important; }
+
+/* .registration-update { gap: 30px; }  */
+.button-alignment {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: row;
+    padding-bottom: 20px;
+}
+
+.button-alignment span {
+    margin-inline: 10px;
+}
