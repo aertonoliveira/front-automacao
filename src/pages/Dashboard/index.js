@@ -106,7 +106,7 @@ class Index extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-lg-8">
             <div className="iq-card">
               <div className="iq-card-header d-flex justify-content-between">
@@ -355,6 +355,22 @@ class Index extends React.Component {
               </div>
             </div>
           </div>
+        </div> */}
+
+        <div className={'cards'}>
+            
+            <div>
+              <h2>Special title treatment</h2>
+              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+              <button>Go somewhere</button>
+            </div>
+  
+            <div>
+              <h2>Special title treatment</h2>
+              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+              <button>Go somewhere</button>
+            </div>
+            
         </div>
       </>
     );

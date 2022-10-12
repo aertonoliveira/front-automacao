@@ -1142,14 +1142,16 @@ input.increment { text-align: center; }
 .ais-Breadcrumb-link, .ais-HierarchicalMenu-link, .ais-Menu-link, .ais-Pagination-link, .ais-RatingMenu-link { color: var(--iq-primary) !important; }
 
 /* .registration-update { gap: 30px; }  */
-.button-alignment {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    flex-direction: row;
-    padding-bottom: 20px;
-}
+.button-alignment { display: flex;align-items: flex-end;justify-content: flex-end;flex-direction: row;padding-bottom: 20px; }
+.button-alignment span { margin-inline: 10px; }
 
-.button-alignment span {
-    margin-inline: 10px;
-}
+.cards {display: flex;justify-content: center;align-items: center;}
+.cards div {background-color: #fff;border-radius: 5px;padding: 20px;cursor: pointer;}
+.cards div:first-child {margin-right: 25px;}
+.cards div p {color: rgba(0, 0, 0, 0.8);}
+.cards div h2 {font-size: 25px;font-weight: 400;margin-bottom: 15px;color: #2e2138;}
+.cards div button {width: 100%;text-align: center;height: 35px;border-radius: 10px;color: #fff;background-color: hsl(253deg 61% 55%);border: none;font-size: 14px;text-transform: capitalize; transition: all .3s ease-out 0s;}
+.cards div button:hover { filter: brightness(0.9); }
+
+
+
