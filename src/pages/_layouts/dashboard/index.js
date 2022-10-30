@@ -102,7 +102,7 @@ class DashboardLayout extends React.Component {
       ],
 
       footerTitle:
-        'Copyright 2020 - Jin Investe - Todos os direitos reservados.',
+        'Copyright 2022 - CooAap - Todos os direitos reservados.',
       collapsed: false,
     };
   }
@@ -130,14 +130,14 @@ class DashboardLayout extends React.Component {
         <div className="wrapper">
           <SideBarStyle
             items={sideBarItems}
-            logo={require('../../../assets/images/logo.gif')}
+            logo={require('../../../assets/images/logo.png')}
             homeUrl={'/'}
           />
 
           <NavBarStyle1
             title={'Dashboard'}
             homeUrl={'/'}
-            logo={require('../../../assets/images/logo.gif')}
+            logo={require('../../../assets/images/logo.png')}
             breadCrumb={items}
           >
             <button

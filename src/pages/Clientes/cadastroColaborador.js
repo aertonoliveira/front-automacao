@@ -15,6 +15,7 @@ import {
   Form,
   Label,
 } from 'reactstrap';
+import { ContainerImagem } from './styles';
 
 import { cadastroClienteRequest } from '../../store/modules/clientes/actions';
 import { InputMask } from '../../components/custom/Inputs';
@@ -75,6 +76,14 @@ const CadastroColaborador = () => {
 
   return (
     <>
+      <ContainerImagem >
+      <img
+              width="250"
+              height="250"
+              src={require('../../assets/images/logo-full.png')}
+              alt="Carregando..."
+            />
+      </ContainerImagem>
       <div className="row">
         <Col sm={12} lg={12}>
           <Card className={'iq-card'}>

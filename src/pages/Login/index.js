@@ -37,6 +37,14 @@ const LoginPage = () => {
 
   return (
     <>
+      <div className="ContainerImagem">
+      <img
+              width="250"
+              height="250"
+              src={require('../../assets/images/logo-full.png')}
+              alt="Carregando..."
+            />
+            </div>
       <h1 className="mb-0">Login</h1>
       <p>Informe seu e-mail e senha para acessar o painel administrativo</p>
       <div id="pills-tabContent-1" className="tab-content mt-0">
@@ -74,14 +82,15 @@ const LoginPage = () => {
             </button>
 
             <span>Ou</span>
-
+            <Link to="/cadastro-colaborador">
             <button
               type="submit"
               className="btn btn-primary"
-              disabled={isLoading ? true : false}
+
             >
-              {isLoading ? 'Carregando...' : 'Cadastrar'}
+             Cadastrar
             </button>
+            </Link>
           </div>
 
           {/* <div className="sign-info">

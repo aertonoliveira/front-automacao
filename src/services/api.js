@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // baseURL: 'http://localhost:8000/api',
+  baseURL: 'http://localhost/api/',
   // Produção
   // baseURL: 'https://automacao-service.herokuapp.com/api/',
   // Dev
-  baseURL: 'https://jin-dev.herokuapp.com/api/',
+  // baseURL: 'https://jin-dev.herokuapp.com/api/',
 });
 
 // Add a 401 response interceptor

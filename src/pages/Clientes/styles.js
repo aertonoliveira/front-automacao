@@ -16,6 +16,9 @@ export const ContainerModal = styled.div`
       padding-bottom: 0;
     }
 `;
+export const ContainerImagem = styled.div`
+   width: 100%;flex-direction: row;align-items: center;justify-content: center;display: flex;
+`;
 
 export const DropContainer = styled.div.attrs({
   ClassName: "dropzone"

@@ -9,7 +9,7 @@ const index = (props) => {
                     <div className="iq-sidebar-logo">
                         <div className="top-logo">
                             <Link to="/" className="logo">
-                                <img src={ require("../../../../assets/images/logo.gif") } className="img-fluid" alt="" />
+                                <img src={ require("../../../../assets/images/logo.png") } className="img-fluid" alt="" />
                                 <span>Vito</span>
                             </Link>
                         </div>

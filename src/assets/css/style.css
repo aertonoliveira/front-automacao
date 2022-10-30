@@ -1153,5 +1153,8 @@ input.increment { text-align: center; }
 .cards div button {width: 100%;text-align: center;height: 35px;border-radius: 10px;color: #fff;background-color: hsl(253deg 61% 55%);border: none;font-size: 14px;text-transform: capitalize; transition: all .3s ease-out 0s;}
 .cards div button:hover { filter: brightness(0.9); }
 
-
+/*personalização */
+.ContainerImagem{
+  width: 100%;flex-direction: row;align-items: center;justify-content: center;display: flex;
+}
 

@@ -25,7 +25,7 @@ class Index extends React.Component {
         <div className="iq-sidebar-logo d-flex justify-content-between">
           <Link to={homeUrl}>
             <img src={logo} className="img-fluid" alt="" />
-            <span>Jin Invest</span>
+            <span>CooAap</span>
           </Link>
         </div>
         <div id="sidebar-scrollbar">
