@@ -112,7 +112,7 @@ const Clientes = () => {
                             <th scope="col">Email</th>
                             <th scope="col">Celular</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Cargo</th>
+                            {/* <th scope="col">Cargo</th> */}
 
                             <th scope="col"></th>
                           </tr>
@@ -152,7 +152,7 @@ const Clientes = () => {
                                     </Button>
                                   )}
                                 </td>
-                                <td>{cliente.roles[0].name}</td>
+                                {/* <td>{cliente.roles[0].name}</td> */}
 
                                 <td>
                                   <Dropdown clienteId={cliente.id} />
