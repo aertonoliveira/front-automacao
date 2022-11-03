@@ -11,7 +11,7 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-sm-6 col-md-6 col-lg-3">
             <div className="iq-card">
               <div className="iq-card-body">
@@ -105,7 +105,7 @@ class Index extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <div className="row">
           <div className="col-lg-8">
             <div className="iq-card">
@@ -358,19 +358,19 @@ class Index extends React.Component {
         </div> */}
 
         <div className={'cards'}>
-            
+
             <div>
-              <h2>Special title treatment</h2>
+              <h2>Plano de saúde</h2>
               <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
               <button>Go somewhere</button>
             </div>
-  
+
             <div>
-              <h2>Special title treatment</h2>
+              <h2>Proteção veicular</h2>
               <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
               <button>Go somewhere</button>
             </div>
-            
+
         </div>
       </>
     );
