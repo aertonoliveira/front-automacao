@@ -23,7 +23,7 @@ function* login({ payload }) {
   } catch (error) {
     // console.log(error.response)
     toast.error('Ocorreu um erro ao tentar realizar o login!');
-    // yield put(Actions.loginFailure(error));
+    yield put(Actions.loginFailure(error));
   }
 }
 
