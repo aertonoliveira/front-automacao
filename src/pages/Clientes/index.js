@@ -13,13 +13,15 @@ import {
   alterarStatusClienteRequest,
 } from '../../store/modules/clientes/actions';
 import Pagination from 'react-js-pagination';
+import { InputMask } from '../../components/custom/Inputs';
 
 const Clientes = () => {
   // Validação
   let validationSchema = useMemo(
     () =>
       yup.object({
-        type: yup.string().required('Por favor, informe seu nome'),
+        type: '',
+        cpf: '',
       }),
     []
   );
@@ -31,13 +33,17 @@ const Clientes = () => {
   const listagem = useSelector((state) => state.cliente.listagemClientes);
 
   const listagemClientes = (data) => {
-    dispatch(listagemClienteRequest(data));
+    const dados ={
+      ...data,
+      numeroPagina: 1
+    }
+    dispatch(listagemClienteRequest(dados));
   };
 
   useEffect(() => {
     const data = {
       type: 'Analista Senior',
-      page: 1,
+      numeroPagina: 1,
     };
     dispatch(listagemClienteRequest(data));
   }, [dispatch]);
@@ -81,20 +87,9 @@ const Clientes = () => {
               ) : (
                 <CardBody className="iq-card-body">
                   <Row className="mb-4">
-                    <Col sm="12" md="6" lg="4">
-                      <select
-                        className="form-control"
-                        name="type"
-                        ref={register}
-                      >
-                        <option value="Analista Senior">Analista Senior</option>
-                        <option value="Gestor de analista">Gestor de analista</option>
-                        <option value="Analista pleno">Analista pleno</option>
-                        <option value="Cliente">Cliente</option>
-                        <option value="Parceiro">Parceiro</option>
-                        <option value="Trader">Trader</option>
-                      </select>
-                    </Col>
+                  <Col sm="12" md="6" lg="2">
+                        <InputMask type="text" placeholder="CPF" name="cpf"  mask="999.999.999-99" ref={register} className="form-control" />
+                      </Col>
 
                     <Col sm="12" md="6" lg="4">
                       <button
@@ -118,7 +113,7 @@ const Clientes = () => {
                             <th scope="col">Celular</th>
                             <th scope="col">Status</th>
                             <th scope="col">Cargo</th>
-                            <th scope="col">Saldo</th>
+
                             <th scope="col"></th>
                           </tr>
                         </thead>
@@ -158,7 +153,7 @@ const Clientes = () => {
                                   )}
                                 </td>
                                 <td>{cliente.roles[0].name}</td>
-                                <td>{cliente.saldo_conta[0].valor}</td>
+
                                 <td>
                                   <Dropdown clienteId={cliente.id} />
                                 </td>

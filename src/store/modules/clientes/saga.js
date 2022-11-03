@@ -12,7 +12,21 @@ function* cadastroCliente(action) {
   try {
     const data = action.payload;
 
-    const response = yield call(api.post, '/cliente', data);
+    const response = yield call(api.post, 'cadastro/cliente', data);
+
+    toast.success('Cliente cadastrado com sucesso!');
+    yield put(Actions.cadastroClienteSuccess(response.data));
+  } catch (error) {
+    toast.error('Ocorreu um erro ao tentar cadastrar o cliente!');
+    yield put(Actions.cadastroClienteFailure());
+  }
+}
+
+function* cadastroColaborador(action) {
+  try {
+    const data = action.payload;
+
+    const response = yield call(api.post, '/cadastro/cliente', data);
 
     toast.success('Cliente cadastrado com sucesso!');
     yield put(Actions.cadastroClienteSuccess(response.data));
@@ -25,10 +39,23 @@ function* cadastroCliente(action) {
 function* listagemCliente(action) {
   try {
     const data = action.payload;
-
+    console.log(data);
+    let url = '';
+    if(data.data != '' && typeof(data.data) != 'undefined'){
+      url += '&data='+data.data;
+    }
+    if(data.cpf != ''  && typeof(data.cpf) != 'undefined'){
+      url += '&cpf='+data.cpf;
+    }
+    if(data.numero_contrato != '' && typeof(data.numero_contrato) != 'undefined'){
+      url += '&numero_contrato='+data.numero_contrato;
+    }
+    if(data.tipo_contrato != '' && typeof(data.tipo_contrato) != 'undefined'){
+      url += '&tipo_contrato='+data.tipo_contrato;
+    }
     const response = yield call(
       api.get,
-      '/cliente/' + data.type + '?page=' + data.page
+      '/cliente/Parceiro?page=' + data.numeroPagina+url
     );
 
     yield put(Actions.listagemClienteSuccess(response.data));

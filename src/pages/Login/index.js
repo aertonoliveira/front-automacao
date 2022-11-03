@@ -8,6 +8,7 @@ import useYupValidationResolver from '../../hooks/useYupValidationResolver';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { loginRequest } from '../../store/modules/auth/actions';
+import { Form } from 'reactstrap';
 
 const LoginPage = () => {
   // Validação
@@ -31,8 +32,11 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.loading);
 
-  const handleLogin = ({ email, password }) => {
-    dispatch(loginRequest(email, password));
+  const handleLogin = (e) => {
+    console.log(e);
+    dispatch(loginRequest(e.email, e.password));
+
+
   };
 
   return (
@@ -48,7 +52,7 @@ const LoginPage = () => {
       <h1 className="mb-0">Login</h1>
       <p>Informe seu e-mail e senha para acessar o painel administrativo</p>
       <div id="pills-tabContent-1" className="tab-content mt-0">
-        <form name="form" className="mt-4" onSubmit={handleSubmit(handleLogin)}>
+        <Form className="mt-4" onSubmit={handleSubmit(handleLogin)}>
           <div className={'form-group ' + (errors.email ? 'has-error' : '')}>
             <label htmlFor="email">E-mail</label>
             <input className="form-control mb-0" name="email" ref={register} />
@@ -101,7 +105,7 @@ const LoginPage = () => {
               </Link>
             </span>
           </div> */}
-        </form>
+        </Form>
       </div>
     </>
   );

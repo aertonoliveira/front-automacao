@@ -10,7 +10,7 @@
     "icon": "ri-home-4-line"
   },
   {
-    "title": "Clientes",
+    "title": "Colaboradores",
     "name": "clientes",
     "is_heading": false,
     "is_active": false,
@@ -20,7 +20,7 @@
     "icon": "ri-user-4-line"
   },
   {
-    "title": "Produtos",
+    "title": "Planos",
     "name": "produtos",
     "is_heading": false,
     "is_active": false,
@@ -30,7 +30,7 @@
     "icon": "ri-briefcase-4-line"
   },
   {
-    "title": "Conta Bancaria",
+    "title": "Proceteção Veicular",
     "name": "Conta Bancaria",
     "is_heading": false,
     "is_active": false,
@@ -39,16 +39,7 @@
     "is_icon_class": true,
     "icon": "ri-briefcase-4-line"
   },
-  {
-    "title": "Extrato",
-    "name": "Extrato",
-    "is_heading": false,
-    "is_active": false,
-    "link": "/extrato",
-    "class_name": "",
-    "is_icon_class": true,
-    "icon": "ri-briefcase-4-line"
-  },
+
   {
     "title": "Financeiro",
     "name": "Financeiro",
@@ -58,68 +49,7 @@
     "class_name": "",
     "is_icon_class": true,
     "icon": "ri-briefcase-4-line"
-  },
-  {
-    "title": "Fornecedores",
-    "name": "Fornecedores",
-    "is_heading": false,
-    "is_active": false,
-    "class_name": "",
-    "is_icon_class": true,
-    "icon": "ri-edit-line",
-    "children": [
-      {
-        "title": "Adicionar Fornecedor",
-        "is_active": false,
-        "link": "/relatorio/contrato",
-        "class_name": "",
-        "is_icon_class": true,
-        "icon": "ri-edit-line"
-      },
-      {
-        "title": "Serviços",
-        "is_active": false,
-        "link": "/relatorio/parceiro",
-        "class_name": "",
-        "is_icon_class": true,
-        "icon": "ri-edit-line"
-      }
-    ]
-  },
-  {
-    "title": "Relatorios",
-    "name": "relatorios",
-    "is_heading": false,
-    "is_active": false,
-    "class_name": "",
-    "is_icon_class": true,
-    "icon": "ri-edit-line",
-    "children": [
-      {
-        "title": "Contratos",
-        "is_active": false,
-        "link": "/relatorio/contratos",
-        "class_name": "",
-        "is_icon_class": true,
-        "icon": "ri-edit-line"
-      },
-      {
-        "title": "Parceiros",
-        "is_active": false,
-        "link": "/relatorio/parceiro",
-        "class_name": "",
-        "is_icon_class": true,
-        "icon": "ri-edit-line"
-      },
-      {
-        "title": "Analistas",
-        "is_active": false,
-        "link": "/relatorio/analistas",
-        "class_name": "",
-        "is_icon_class": true,
-        "icon": "ri-edit-line"
-      }
-    ]
   }
+
 
 ]

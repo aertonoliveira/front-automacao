@@ -54,7 +54,7 @@ const CadastroColaborador = () => {
         profissao: yup.string().required('Por favor, informe seu profissão'),
         telefone: yup.string().required('Por favor, informe seu telefone'),
         celular: yup.string().required('Por favor, informe seu celular'),
-        role_id: yup.string().required('Por favor, informe seu role_id'),
+        // role_id: yup.string().required('Por favor, informe seu role_id'),
 
         email: yup
           .string()
@@ -71,14 +71,18 @@ const CadastroColaborador = () => {
 
   const cadastrarCliente = (data) => {
     console.log(data);
-    dispatch(cadastroClienteRequest(data));
+    const obj = {
+      ...data,
+      tipo_pessoa: 'F'
+    }
+    dispatch(cadastroClienteRequest(obj));
   };
 
   return (
     <>
       <ContainerImagem >
       <img
-              width="250"
+              width="320"
               height="250"
               src={require('../../assets/images/logo-full.png')}
               alt="Carregando..."
