@@ -3,7 +3,7 @@ import axios from 'axios';
 const api = axios.create({
   // baseURL: 'http://localhost:8091/api/',
   // Produção
-  baseURL: 'http://207.154.231.193:8091/api/',
+  baseURL: 'http://165.232.146.109:8091/api/',
   // Dev
   // baseURL: 'https://jin-dev.herokuapp.com/api/',
 });
@@ -15,8 +15,6 @@ api.interceptors.response.use(
   },
   function (error) {
     if (401 === error.response.status) {
-
-
       // Apaga todo o localstorage
       localStorage.clear();
 
