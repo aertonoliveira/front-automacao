@@ -15,11 +15,16 @@ function* login({ payload }) {
     const response = yield call(api.post, '/auth/login', { email, password });
 
     const { token, data } = response.data;
-    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(Actions.loginSuccess(token, data));
+    if (data.ativo) {
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+      yield call(history.push, '/dashboard');
+    } else {
+      // yield call(history.push, '/pagamento');
 
-    yield call(history.push, '/dashboard');
+      console.table('bateu no usuario inválido');
+    }
   } catch (error) {
     // console.log(error.response)
     toast.error('Ocorreu um erro ao tentar realizar o login!');

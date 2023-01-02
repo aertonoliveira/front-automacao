@@ -11,17 +11,17 @@ export default function RouteWrapper({
   isPrivate = false,
   ...rest
 }) {
-  const { signed } = store.getState().auth;
-
-  if (!signed && isPrivate) {
+  const ativo = store.getState().user?.profile?.ativo ?? false;
+  console.log('o que é isso? ', ativo);
+  if (!ativo && isPrivate) {
     return <Redirect to="/" />;
   }
 
-  if (signed && !isPrivate) {
+  if (ativo && !isPrivate) {
     return <Redirect to="/dashboard" />;
   }
 
-  const Layout = signed ? DashboardLayout : AuthLayout;
+  const Layout = ativo ? DashboardLayout : AuthLayout;
 
   return (
     <Route

@@ -35,20 +35,18 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     console.log(e);
     dispatch(loginRequest(e.email, e.password));
-
-
   };
 
   return (
     <>
       <div className="ContainerImagem">
-      <img
-              width="250"
-              height="250"
-              src={require('../../assets/images/logo-full.png')}
-              alt="Carregando..."
-            />
-            </div>
+        <img
+          width="250"
+          height="250"
+          src={require('../../assets/images/logo-full.png')}
+          alt="Carregando..."
+        />
+      </div>
       <h1 className="mb-0">Login</h1>
       <p>Informe seu e-mail e senha para acessar o painel administrativo</p>
       <div id="pills-tabContent-1" className="tab-content mt-0">
@@ -87,24 +85,11 @@ const LoginPage = () => {
 
             <span>Ou</span>
             <Link to="/cadastro-colaborador">
-            <button
-              type="submit"
-              className="btn btn-primary"
-
-            >
-             Cadastrar
-            </button>
+              <button type="submit" className="btn btn-primary">
+                Cadastrar
+              </button>
             </Link>
           </div>
-
-          {/* <div className="sign-info">
-            <span className="dark-color d-inline-block line-height-2">
-              Não tem uma conta?
-              <Link to="/register" className="btn btn-link">
-                Criar conta
-              </Link>
-            </span>
-          </div> */}
         </Form>
       </div>
     </>

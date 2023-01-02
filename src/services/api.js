@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // baseURL: 'http://localhost:8091/api/',
+  baseURL: 'http://localhost:8091/api/',
   // Produção
-  baseURL: 'http://165.232.146.109:8091/api/',
+  // baseURL: 'http://165.232.146.109:8091/api/',
   // Dev
   // baseURL: 'https://jin-dev.herokuapp.com/api/',
 });
