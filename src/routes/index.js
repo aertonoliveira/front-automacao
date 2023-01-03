@@ -27,6 +27,8 @@ export default function Router() {
       <Route path="/criar-nova-senha/:token" component={NewPassword} />
       <Route path="/cadastro-colaborador" component={CadastroColaborador} />
 
+      
+
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/clientes" component={Clientes} isPrivate />
       <Route path="/cadastro-clientes" component={CadastroClientes} isPrivate />
